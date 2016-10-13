@@ -1,8 +1,8 @@
 room_Office1={
 	"name":"Office 1",
 	"description":
-    """add me""",
-	"items":[],
+    """Your office is small with a chair by your desk and a bench against the wall. There is a door to the east leading to Therapy""",
+	"items":[item_phone],
 	"exits":{"East":"Therapy room"}
 }
 room_Office2={
@@ -52,7 +52,7 @@ room_Yard={
 	"description":
     """add me""",
 	"items":[],
-	"exits":{"north":"Reception"}	
+	"exits":{"north":"Reception"}
 }
 rooms={
 	"Office 1":room_Office1,
