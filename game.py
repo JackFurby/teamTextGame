@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+from random import randint
 from map import rooms
 from characters import *
 from items import *
@@ -217,13 +218,19 @@ def is_valid_exit(exits, chosen_exit):
     """
     return chosen_exit in exits
 
-def cannibal_move(exits):
+#This function needs no input and returns the direction in which the can
+def cannibal_move():
+    curr_room=Players["Hannibal the cannibal"]["current_room"]
+    exits=curr_room["exits"]
     x=len(exits)-1
-    r=random.randint(0,x)
+    r=randint(0,x)
     for k in exits:
         x=x-1
         if x==0:
-            return k
+            x=k
+            break
+    curr_room= move(exits, x)
+    Players["Hannibal the cannibal"]["current_room"]=curr_room
 
 def execute_go(direction):
     """This function, given the direction (e.g. "south") updates the current room
