@@ -217,6 +217,13 @@ def is_valid_exit(exits, chosen_exit):
     """
     return chosen_exit in exits
 
+def cannibal_move(exits):
+    x=len(exits)-1
+    r=random.randint(0,x)
+    for k in exits:
+        x=x-1
+        if x==0:
+            return k
 
 def execute_go(direction):
     """This function, given the direction (e.g. "south") updates the current room
