@@ -7,12 +7,12 @@ Player={
   "current_room":rooms["Office 1"],
   "inventory":[]
 }
-Cannibal=[
+Cannibal={
   "name":"Hannibal the cannibal",
   "current_room":rooms["Room 666"],
   "inventory":[],
   "file":""
-]
+}
 Players={
   Player:"",
   Cannibal:"",
