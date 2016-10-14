@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 from map import rooms
-from player import *
+from characters import *
 from items import *
 from gameparser import *
 
