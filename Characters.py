@@ -16,37 +16,37 @@ Cannibal={
 Patient_123={
   "name":"Patient 123",
   "current_room":rooms["Office 1"],
-  "inventory":[]
+  "inventory":[],
   "file":""
 }
 Patient_483={
   "name":"Patient 483",
   "current_room":rooms["Office 1"],
-  "inventory":[]
+  "inventory":[],
   "file":""
   }
 Patient_645={
   "name":"Patient 645",
   "current_room":rooms["Office 1"],
-  "inventory":[]
+  "inventory":[],
   "file":""
   }
 Patient_234={
   "name":"Patient 234",
   "current_room":rooms["Office 1"],
-  "inventory":[]
+  "inventory":[],
   "file":""
 }
 Patient_251={
   "name":"Patient 251",
   "current_room":rooms["Office 1"],
-  "inventory":[]
+  "inventory":[],
   "file":""
 }
 Patient_347={
   "name":"Patient 347",
   "current_room":rooms["Office 1"],
-  "inventory":[]
+  "inventory":[],
   "file":""
 }
 Players={
