@@ -381,6 +381,10 @@ def main():
 # Are we being run as a script? If so, run main().
 # '__main__' is the name of the scope in which top-level code executes.
 # See https://docs.python.org/3.4/library/__main__.html for explanation
+
+current_room = Player["current_room"]
+inventory = Player["inventory"]
+
 if __name__ == "__main__":
     main()
 
