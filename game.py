@@ -61,7 +61,7 @@ def print_inventory_items(items):
     print "You have ..." instead of "There is ... here.". For example:
 
     >>> print_inventory_items(inventory)
-    You have id card, laptop, money.
+    You have .
     <BLANKLINE>
 
     """
@@ -105,13 +105,12 @@ def print_room(room):
     There is a pack of biscuits, a student handbook here.
     <BLANKLINE>
 
-    >>> print_room(rooms["Admins"])
+    >>> print_room(rooms["Office 1"])
     <BLANKLINE>
-    MJ AND SIMON'S ROOM
+    Office 1
     <BLANKLINE>
-    You are leaning agains the door of the systems managers'
-    room. Inside you notice Matt "MJ" John and Simon Jones. They
-    ignore you. To the north is the reception.
+    Your office is small with a chair by your desk and a bench against the wall.
+    There is a door to the east leading to Therapy.
     <BLANKLINE>
 
     Note: <BLANKLINE> here means that doctest should expect a blank line.
@@ -130,12 +129,12 @@ def exit_leads_to(exits, direction):
     exit taken from this dictionary). It returns the name of the room into which
     this exit leads. For example:
 
+    >>> exit_leads_to(rooms["Office 1"]["exits"], "east")
+    "Room 483"
     >>> exit_leads_to(rooms["Reception"]["exits"], "south")
-    "MJ and Simon's room"
-    >>> exit_leads_to(rooms["Reception"]["exits"], "east")
-    "your personal tutor's office"
-    >>> exit_leads_to(rooms["Tutor"]["exits"], "west")
-    'Reception'
+    "Room 123"
+    >>> exit_leads_to(rooms["Emergency room"]["exits"], "south")
+    'Office 2'
     """
     return rooms[exits[direction]]["name"]
 
@@ -148,10 +147,10 @@ def print_exit(direction, leads_to):
     GO <EXIT NAME UPPERCASE> to <where it leads>.
 
     For example:
-    >>> print_exit("east", "you personal tutor's office")
-    GO EAST to you personal tutor's office.
-    >>> print_exit("south", "MJ and Simon's room")
-    GO SOUTH to MJ and Simon's room.
+    >>> print_exit("east", "Room 483")
+    GO EAST to Room 483.
+    >>> print_exit("north", "Room 234")
+    GO NORTH to Room 234.
     """
     print("GO " + direction.upper() + " to " + leads_to + ".")
 
@@ -207,13 +206,13 @@ def is_valid_exit(exits, chosen_exit):
     the name of the exit has been normalised by the function normalise_input().
     For example:
 
-    >>> is_valid_exit(rooms["Reception"]["exits"], "south")
+    >>> is_valid_exit(rooms["Office 1"]["exits"], "east")
     True
-    >>> is_valid_exit(rooms["Reception"]["exits"], "up")
+    >>> is_valid_exit(rooms["Office 1"]["exits"], "up")
     False
-    >>> is_valid_exit(rooms["Parking"]["exits"], "west")
+    >>> is_valid_exit(rooms["Room 666"]["exits"], "west")
     False
-    >>> is_valid_exit(rooms["Parking"]["exits"], "east")
+    >>> is_valid_exit(rooms["Room 123"]["exits"], "east")
     True
     """
     return chosen_exit in exits
@@ -349,11 +348,11 @@ def move(exits, direction):
     dictionary "exits" of avaiable exits, they choose to move towards the exit
     with the name given by "direction". For example:
 
-    >>> move(rooms["Reception"]["exits"], "south") == rooms["Admins"]
+    >>> move(rooms["Office 2"]["exits"], "south") == rooms["Canteen"]
     True
-    >>> move(rooms["Reception"]["exits"], "east") == rooms["Tutor"]
+    >>> move(rooms["Office 1"]["exits"], "east") == rooms["Room 483"]
     True
-    >>> move(rooms["Reception"]["exits"], "west") == rooms["Office"]
+    >>> move(rooms["Reception"]["exits"], "west") == rooms["Room 123"]
     False
     """
 

@@ -1,96 +1,97 @@
 room_Office1={
-	"name":"office 1",
+	"name":"Office 1",
 	"description":
-    """Your office is small with a chair by your desk and a bench against the wall. There is a door to the east leading to Therapy""",
+    """Your office is small with a chair by your desk and a bench against the wall.
+    There is a door to the east leading to Therapy.""",
 	"items":[],
-	"exits":{"East":"Room 483"}
+	"exits":{"east":"Room 483"}
 }
 room_Office2={
-	"name":"office 2",
+	"name":"Office 2",
 	"description":
     """add me""",
 	"items":[],
 	"exits":{"north":"Emergency room","south":"Canteen","east":"Yard","west":"Therapy room"}	
 }
 room_Reception={
-	"name":"reception",
+	"name":"Reception",
 	"description":
     """add me""",
 	"items":[],
 	"exits":{"south":"Room 123","west":"Emergency room"}	
 }
 room_Therapy={
-	"name":"therapy room",
+	"name":"Therapy room",
 	"description":
     """add me""",
 	"items":[],
 	"exits":{"east":"Office 2","south":"Room 483"}	
 }
 room_Canteen={
-	"name":"canteen",
+	"name":"Canteen",
 	"description":
     """add me""",
 	"items":[],
 	"exits":{"west":"Room 483","south":"Room 234","east":"Room 251","north":"Office 2"}	
 }
 room_666={
-	"name":"room 666",
+	"name":"Room 666",
 	"description":
     """add me""",
 	"items":[],
 	"exits":{"north":"Room 234"}	
 }
 room_ER={
-	"name":"emergency room",
+	"name":"Emergency room",
 	"description":
     """add me""",
 	"items":[],
 	"exits":{"south":"Office 2"}
 }
 room_Yard={
-	"name":"the yard",
+	"name":"The yard",
 	"description":
     """add me""",
 	"items":[],
 	"exits":{"west":"Office 2","south":"Room 251"}
 }
 room_483={
-	"name":"room 483",
+	"name":"Room 483",
 	"description":
     """add me""",
 	"items":[],
 	"exits":{"north":"Therapy room","west":"Office 1","south":"Room 645","east":"Canteen"}	
 }
 room_645={
-	"name":"room 645",
+	"name":"Room 645",
 	"description":
     """add me""",
 	"items":[],
 	"exits":{"north":"Room 483","east":"Room 234"}	
 }
 room_234={
-	"name":"room 234",
+	"name":"Room 234",
 	"description":
     """add me""",
 	"items":[],
 	"exits":{"north":"Canteen","south":"Room 666","east":"Room 347","west":"645"}	
 }
 room_123={
-	"name":"room 123",
+	"name":"Room 123",
 	"description":
     """add me""",
 	"items":[],
 	"exits":{"north":"Reception"}	
 }
 room_251={
-	"name":"room 251",
+	"name":"Room 251",
 	"description":
     """add me""",
 	"items":[],
 	"exits":{"north":"Yard","south":"Room 347","east":"Reception","west":"Canteen"}	
 }
 room_347 = {
-	"name":"room 347",
+	"name":"Room 347",
 	"description":
     """add me""",
 	"items":[],
