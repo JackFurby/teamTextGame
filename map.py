@@ -4,7 +4,8 @@ room_Office1={
     """Your office is small with a chair by your desk and a bench against the wall.
 There is a door to the east leading to Therapy.""",
 	"items":[],
-	"exits":{"east":"Room 483"}
+	"exits":{"east":"Room 483"},
+	"map":["------------", "|          |", "| OFFICE 1 |", "|          |", "|          |", "---- \------"]
 }
 room_Office2={
 	"name":"Office 2",
