@@ -232,7 +232,6 @@ def execute_go(direction):
     else:
         print("You cannot go there.")
 
-
 def execute_take(item_id):
     """This function takes an item_id as an argument and moves this item from the
     list of items in the current room to the player's inventory. However, if
