@@ -107,7 +107,7 @@ def print_room(room):
 
     >>> print_room(rooms["Office 1"])
     <BLANKLINE>
-    Office 1
+    OFFICE 1
     <BLANKLINE>
     Your office is small with a chair by your desk and a bench against the wall.
     There is a door to the east leading to Therapy.
@@ -212,7 +212,7 @@ def is_valid_exit(exits, chosen_exit):
     False
     >>> is_valid_exit(rooms["Room 666"]["exits"], "west")
     False
-    >>> is_valid_exit(rooms["Room 123"]["exits"], "east")
+    >>> is_valid_exit(rooms["Room 123"]["exits"], "north")
     True
     """
     return chosen_exit in exits
