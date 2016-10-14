@@ -218,7 +218,7 @@ def is_valid_exit(exits, chosen_exit):
     """
     return chosen_exit in exits
 
-#This function needs no input and returns the direction in which the can
+#This function needs no input and changes the Cannibal's position to a new random one
 def cannibal_move():
     curr_room=Players["Hannibal the cannibal"]["current_room"]
     exits=curr_room["exits"]
@@ -388,6 +388,7 @@ def main():
 
         # Execute the player's command
         execute_command(command)
+        cannibal_move()
 
 
 
