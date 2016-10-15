@@ -96,7 +96,7 @@ room_347={
 	"description":
     """add me""",
 	"items":[],
-	"exits":{"north":"Room 251","east":"Room 123","west":"234","south":"Room 696"}	
+	"exits":{"north":"Room 251","east":"Room 123","west":"Room 234","south":"Room 696"}	
 }
 room_696={
 	"name":"Room 696",
