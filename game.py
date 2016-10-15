@@ -396,12 +396,11 @@ def move(exits, direction):
 
 # This is the entry point of our program
 def main():
-
+    random_generate_items()
     # Main game loop
     while True:
         # Display game status (room description, inventory etc.)
 
-        random_generate_items()
 
         print_room(current_room)
         print_inventory_items(inventory)
