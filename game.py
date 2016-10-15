@@ -309,9 +309,13 @@ def execute_drop(item_id):
 def execute_open(open_id):
     """This function takes an open_id as an argument and shows a map of the current game.
     """
-    #print map based of current room "Doc" is in
-    for line in Players["Doc"]["current_room"]["map"]:
-        print(line)
+    
+    if open_id == "map":
+        #print map based of current room "Doc" is in
+        for line in Players["Doc"]["current_room"]["map"]:
+            print(line)
+    else:
+        return
         
 def execute_command(command):
     """This function takes a command (a list of words as returned by
