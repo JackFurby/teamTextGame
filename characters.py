@@ -10,7 +10,7 @@ Player={
 Cannibal={
   "name":"Hannibal the cannibal",
   "current_room":rooms["Room 666"],
-  "inventory":[],
+  "inventory":["Knife"],
   "file":""
 }
 Patient_123={
@@ -50,7 +50,7 @@ Patient_347={
   "file":""
 }
 Players={
-  "Player":Player,
+  "Doc":Player,
   "Hannibal the cannibal":Cannibal,
   "Patient 123":Patient_123,
   "Patient 483":Patient_483,
