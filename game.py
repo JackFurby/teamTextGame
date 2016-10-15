@@ -85,9 +85,8 @@ def print_inventory_items(items):
     <BLANKLINE>
 
     """
-
-    print("You have " + list_of_items(items) + ".")
-    print()
+    if items:
+        print("You have " + list_of_items(items) + ".\n")
 
 
 def print_room(room):
@@ -239,23 +238,23 @@ def is_valid_exit(exits, chosen_exit):
 
 #This function needs no input and changes the Cannibal's position to a new random one
 def cannibal_move():
-    curr_room=Players["Hannibal the cannibal"]["current_room"]
-    exits=curr_room["exits"]
+    play_curr=Players["Doc"]["current_room"]
+    exits=Players["Hannibal the cannibal"]["current_room"]["exits"]
     x=len(exits)-1
     r=randint(0,x)
+    k=""
     for k in exits:
-        x=x-1
-        if x==0:
-            x=k
+        if r==0:
             break
-    curr_room= move(exits, x)
-    Players["Hannibal the cannibal"]["current_room"]=curr_room
-
+        r=r-1
+    x=k
+    Players["Hannibal the cannibal"]["current_room"]= move(exits, x)
     #This for loop checks if the cannibal is in a room near the player and alerts him
-    exits=curr_room["exits"]
+    exits=Players["Hannibal the cannibal"]["current_room"]["exits"]
     for k in exits:
-        if curr_room["name"]==Players["Hannibal the cannibal"]["current_room"]["exits"][k]:
-            print("\nYou hear steps nearby...\n")
+        if exits[k]==Players["Doc"]["current_room"]["name"]:
+            print("\n                                     !!!WARNING!!!")
+            print("                                 You hear steps nearby...")
 
 def execute_go(direction):
     """This function, given the direction (e.g. "south") updates the current room
@@ -263,13 +262,10 @@ def execute_go(direction):
     (and prints the name of the room into which the player is
     moving). Otherwise, it prints "You cannot go there."
     """
-    global current_room
-    if is_valid_exit(current_room['exits'], direction) == True:
-        current_room = move(current_room['exits'], direction)
-        print("you are now in", (current_room['name']) + '.')
+    if is_valid_exit(Players["Doc"]["current_room"]['exits'], direction) == True:
+        Players["Doc"]["current_room"] = move(Players["Doc"]["current_room"]['exits'], direction)
     else:
-        print("You cannot go there.")
-
+        print("\nYou cannot go there.")
 def execute_take(item_id):
     """This function takes an item_id as an argument and moves this item from the
     list of items in the current room to the player's inventory. However, if
@@ -277,18 +273,14 @@ def execute_take(item_id):
     "You cannot take that."
     """
 
-    global inventory
-
     takeItem = []
-    for item in current_room['items']:
+    for item in Players["Doc"]["current_room"]['items']:
         takeItem.append(item['id'])
     if item_id in takeItem:
-        #print(inventory)
-        inventory = inventory + ([d for d in (current_room['items']) if d.get('id') == item_id])
-        print (inventory)
-        #print(current_room['items'])
-        current_room['items'] = [d for d in (current_room['items']) if d.get('id') != item_id]
-        #print(current_room['items'])
+        Players["Doc"]["inventory"] = Players["Doc"]["inventory"] + ([d for d in (Players["Doc"]["current_room"]['items']) if d.get('id') == item_id])
+        #print(Players["Doc"]["current_room"]['items'])
+        Players["Doc"]["current_room"]['items'] = [d for d in (Players["Doc"]["current_room"]['items']) if d.get('id') != item_id]
+        #print(Players["Doc"]["current_room"]['items'])
         print(item_id + " added to your inventory.")
     else:
         print("You cannot take that.")
@@ -300,17 +292,15 @@ def execute_drop(item_id):
     no such item in the inventory, this function prints "You cannot drop that."
     """
 
-    global inventory
-
     dropItem = []
-    for item in inventory:
+    for item in Players["Doc"]["inventory"]:
         dropItem.append(item['id'])
     if item_id in dropItem:
-        #print(current_room['items'])
-        current_room['items'] = current_room['items'] + [d for d in inventory if d.get('id') == item_id]
-        #print(current_room['items'])
+        #print(Players["Doc"]["current_room"]['items'])
+        Players["Doc"]["current_room"]['items'] = Players["Doc"]["current_room"]['items'] + [d for d in inventory if d.get('id') == item_id]
+        #print(Players["Doc"]["current_room"]['items'])
         #print(inventory)
-        inventory = [d for d in inventory if d.get('id') != item_id]
+        Players["Doc"]["inventory"] = [d for d in Players["Doc"]["inventory"] if d.get('id') != item_id]
         #print(inventory)
         print(item_id + " removed from your inventory.")
     else:
@@ -336,6 +326,8 @@ def execute_command(command):
     if command[0] == "go":
         if len(command) > 1:
             execute_go(command[1])
+            cannibal_move()
+
         else:
             print("Go where?")
 
@@ -356,7 +348,10 @@ def execute_command(command):
             execute_open(command[1])
         else:
             print("Open what?")
-
+      
+    #Way to exit the game without having to crash it
+    elif command[0] == "exit":
+        return False
     else:
         print("This makes no sense.")
 
@@ -404,30 +399,24 @@ def main():
 
     #Add each item to a random room
     random_generate_items()
-
     # Main game loop
     while True:
         # Display game status (room description, inventory etc.)
-
-        print_room(current_room)
-        print_inventory_items(inventory)
+        print_room(Players["Doc"]["current_room"])
+        print_inventory_items(Players["Doc"]["inventory"])
 
         # Show the menu with possible actions and ask the player
-        command = menu(current_room["exits"], current_room["items"], inventory)
-
+        command = menu(Players["Doc"]["current_room"]["exits"], Players["Doc"]["current_room"]["items"], Players["Doc"]["inventory"])
         # Execute the player's command
         execute_command(command)
-        cannibal_move()
+        if execute_command(command)==False:
+            break
 
 
 
 # Are we being run as a script? If so, run main().
 # '__main__' is the name of the scope in which top-level code executes.
 # See https://docs.python.org/3.4/library/__main__.html for explanation
-
-current_room = Player["current_room"]
-inventory = Player["inventory"]
-random_generate_items()
 
 if __name__ == "__main__":
     main()
