@@ -253,7 +253,7 @@ def cannibal_move():
 
     #This for loop checks if the cannibal is in a room near the player and alerts him
     for k in exits:
-        if curr_room==Players["Hannibal the cannibal"]["current_room"]["exits"][k]:
+        if curr_room["name"]==Players["Hannibal the cannibal"]["current_room"]["exits"][k]["name"]:
             print("\nYou hear steps nearby...\n")
 
 def execute_go(direction):
