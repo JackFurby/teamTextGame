@@ -14,6 +14,14 @@ item_key = {
     "description":
     """You can use this key to open important doors..."""
 }
+item_Knife = {
+    "id": "Knife",
+
+    "name": "Knife",
+
+    "description":
+    """This knife is very sharp. It would be great to use on some succulent steak"""
+}
 
 #Added items dictionary so we can access items without knowing their location
 items = {
