@@ -23,7 +23,6 @@ def random_generate_items():
 
         #Add the phone to the items in the room
         list_of_rooms[item_location]["items"].append(items[i])
-        print(list_of_rooms[item_location])
 
 
 def list_of_items(items):
@@ -47,6 +46,7 @@ def list_of_items(items):
     for item_list in items:
         itemList.append(item_list['name'])
     return(', '.join(itemList))
+
 
 def print_room_items(room):
     """This function takes a room as an input and nicely displays a list of items
@@ -75,6 +75,7 @@ def print_room_items(room):
     else:
         print("There is " + list_of_items(room['items']) + " here.")
         print()
+
 
 def print_inventory_items(items):
     """This function takes a list of inventory items and displays it nicely, in a
@@ -144,6 +145,7 @@ def print_room(room):
     print(room["description"])
     print()
     print_room_items(room)
+
 
 def exit_leads_to(exits, direction):
     """This function takes a dictionary of exits and a direction (a particular
@@ -251,6 +253,11 @@ def cannibal_move():
             break
     curr_room= move(exits, x)
     Players["Hannibal the cannibal"]["current_room"]=curr_room
+
+    #This for loop checks if the cannibal is in a room near the player and alerts him
+    for k in exits:
+        if curr_room==Players["Hannibal the cannibal"]["current_room"]["exits"][k]:
+            print("\nYou hear steps nearby...\n")
 
 def execute_go(direction):
     """This function, given the direction (e.g. "south") updates the current room
@@ -396,12 +403,9 @@ def move(exits, direction):
 
 # This is the entry point of our program
 def main():
-
     # Main game loop
     while True:
         # Display game status (room description, inventory etc.)
-
-        random_generate_items()
 
         print_room(current_room)
         print_inventory_items(inventory)
@@ -421,6 +425,7 @@ def main():
 
 current_room = Player["current_room"]
 inventory = Player["inventory"]
+random_generate_items()
 
 if __name__ == "__main__":
     main()
