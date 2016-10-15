@@ -23,7 +23,6 @@ def random_generate_items():
 
         #Add the phone to the items in the room
         list_of_rooms[item_location]["items"].append(items[i])
-        print(list_of_rooms[item_location])
 
 
 def list_of_items(items):
@@ -402,6 +401,10 @@ def move(exits, direction):
 
 # This is the entry point of our program
 def main():
+
+    #Add each item to a random room
+    random_generate_items()
+
     # Main game loop
     while True:
         # Display game status (room description, inventory etc.)
