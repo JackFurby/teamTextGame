@@ -352,6 +352,7 @@ def execute_command(command):
     #Way to exit the game without having to crash it
     elif command[0] == "exit":
         return False
+    
     else:
         print("This makes no sense.")
 
@@ -408,7 +409,6 @@ def main():
         # Show the menu with possible actions and ask the player
         command = menu(Players["Doc"]["current_room"]["exits"], Players["Doc"]["current_room"]["items"], Players["Doc"]["inventory"])
         # Execute the player's command
-        execute_command(command)
         if execute_command(command)==False:
             break
 
