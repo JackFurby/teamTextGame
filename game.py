@@ -13,7 +13,7 @@ def random_generate_items():
     #It creates a list of all the rooms other than the room the player is starting in.
     list_of_rooms = []
     for i in rooms:
-        if not(rooms[i] == Player["current_room"]):
+        if not(rooms[i] == Player["current_room"] or rooms[i]==rooms["Reception"]):
             list_of_rooms.append(rooms[i])
 
     #This loops through all the items in the game and spawns them in random rooms
