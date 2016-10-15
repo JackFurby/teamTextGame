@@ -12,7 +12,7 @@ room_Office2={
 	"description":
     """add me""",
 	"items":[],
-	"exits":{"north":"Emergency room","south":"Canteen","east":"Yard","west":"Therapy room"}	
+	"exits":{"north":"Emergency room","south":"Canteen","east":"The yard","west":"Therapy room"}	
 }
 room_Reception={
 	"name":"Reception",
@@ -75,7 +75,7 @@ room_234={
 	"description":
     """add me""",
 	"items":[],
-	"exits":{"north":"Canteen","south":"Room 666","east":"Room 347","west":"645"}	
+	"exits":{"north":"Canteen","south":"Room 666","east":"Room 347","west":"Room 645"}	
 }
 room_123={
 	"name":"Room 123",
@@ -89,7 +89,7 @@ room_251={
 	"description":
     """add me""",
 	"items":[],
-	"exits":{"north":"Yard","south":"Room 347","east":"Reception","west":"Canteen"}	
+	"exits":{"north":"The yard","south":"Room 347","east":"Reception","west":"Canteen"}	
 }
 room_347={
 	"name":"Room 347",
