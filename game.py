@@ -47,7 +47,6 @@ def list_of_items(items):
         itemList.append(item_list['name'])
     return(', '.join(itemList))
 
-
 def print_room_items(room):
     """This function takes a room as an input and nicely displays a list of items
     found in this room (followed by a blank line). If there are no items in
@@ -75,7 +74,6 @@ def print_room_items(room):
     else:
         print("There is " + list_of_items(room['items']) + " here.")
         print()
-
 
 def print_inventory_items(items):
     """This function takes a list of inventory items and displays it nicely, in a
@@ -145,7 +143,6 @@ def print_room(room):
     print(room["description"])
     print()
     print_room_items(room)
-
 
 def exit_leads_to(exits, direction):
     """This function takes a dictionary of exits and a direction (a particular
@@ -403,6 +400,10 @@ def move(exits, direction):
 
 # This is the entry point of our program
 def main():
+
+    #Add each item to a random room
+    random_generate_items()
+
     # Main game loop
     while True:
         # Display game status (room description, inventory etc.)
