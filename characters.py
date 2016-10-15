@@ -13,10 +13,13 @@ Cannibal={
   "inventory":["Knife"],
   "file":""
 }
-Patient_123={
-  "name":"Patient 123",
+Leeroy_Jenkins={
+  "name":"Leerooooooooy Jenkiiiiiiins",
+  "patient_no": "420",
   "current_room":rooms["Office 1"],
   "inventory":[],
+  "history":"The one and only. The mighty. No need to say more.",
+  "reason_for_imprisonment": "Failed to obey the guild master's orders. Got the whole group killed",
   "file":""
 }
 Patient_483={
@@ -52,7 +55,6 @@ Patient_347={
 Players={
   "Doc":Player,
   "Hannibal the cannibal":Cannibal,
-  "Patient 123":Patient_123,
   "Patient 483":Patient_483,
   "Patient 645":Patient_645,
   "Patient 234":Patient_234,
