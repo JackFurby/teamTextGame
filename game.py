@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 from random import randint
+from location import rooms
 from characters import *
 from items import *
 from gameparser import *

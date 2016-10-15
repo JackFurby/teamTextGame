@@ -1,4 +1,5 @@
 from items import *
+from location import rooms
 #We have to put an actual name for each patient, cant leave it as patient and a number
 
 Player={
