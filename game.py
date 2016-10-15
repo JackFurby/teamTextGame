@@ -401,7 +401,7 @@ def main():
     while True:
         # Display game status (room description, inventory etc.)
 
-        random_generate_items()
+        
 
         print_room(current_room)
         print_inventory_items(inventory)
@@ -421,6 +421,7 @@ def main():
 
 current_room = Player["current_room"]
 inventory = Player["inventory"]
+random_generate_items()
 
 if __name__ == "__main__":
     main()
