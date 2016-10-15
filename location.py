@@ -14,98 +14,112 @@ room_Office2={
 	"description":
     """add me""",
 	"items":[],
-	"exits":{"north":"Emergency room","south":"Canteen","east":"The yard","west":"Therapy room"}	
+	"exits":{"north":"Emergency room","south":"Canteen","east":"The yard","west":"Therapy room"},
+	"map":(maps["Office 2 map"])	
 }
 room_Reception={
 	"name":"Reception",
 	"description":
     """add me""",
 	"items":[],
-	"exits":{"south":"Room 123","west":"Emergency room"}	
+	"exits":{"south":"Room 123","west":"Emergency room"},
+	"map":(maps["Reception map"])
 }
 room_Therapy={
 	"name":"Therapy room",
 	"description":
     """add me""",
 	"items":[],
-	"exits":{"east":"Office 2","south":"Room 483"}	
+	"exits":{"east":"Office 2","south":"Room 483"},
+	"map":(maps["Therapy room map"])
 }
 room_Canteen={
 	"name":"Canteen",
 	"description":
     """add me""",
 	"items":[],
-	"exits":{"west":"Room 483","south":"Room 234","east":"Room 251","north":"Office 2"}	
+	"exits":{"west":"Room 483","south":"Room 234","east":"Room 251","north":"Office 2"},
+	"map":(maps["Canteen map"])
 }
 room_666={
 	"name":"Room 666",
 	"description":
     """add me""",
 	"items":[],
-	"exits":{"north":"Room 234","east":"Room 696"}	
+	"exits":{"north":"Room 234","east":"Room 696"},
+	"map":(maps["Room 666 map"])
 }
 room_ER={
 	"name":"Emergency room",
 	"description":
     """add me""",
 	"items":[],
-	"exits":{"south":"Office 2"}
+	"exits":{"south":"Office 2"},
+	"map":(maps["Emergency room map"])
 }
 room_Yard={
 	"name":"The yard",
 	"description":
     """add me""",
 	"items":[],
-	"exits":{"west":"Office 2","south":"Room 251"}
+	"exits":{"west":"Office 2","south":"Room 251"},
+	"map":(maps["The yard map"])
 }
 room_483={
 	"name":"Room 483",
 	"description":
     """add me""",
 	"items":[],
-	"exits":{"north":"Therapy room","west":"Office 1","south":"Room 645","east":"Canteen"}	
+	"exits":{"north":"Therapy room","west":"Office 1","south":"Room 645","east":"Canteen"},
+	"map":(maps["Room 483 map"])	
 }
 room_645={
 	"name":"Room 645",
 	"description":
     """add me""",
 	"items":[],
-	"exits":{"north":"Room 483","east":"Room 234"}	
+	"exits":{"north":"Room 483","east":"Room 234"},
+	"map":(maps["Room 645 map"])	
 }
 room_234={
 	"name":"Room 234",
 	"description":
     """add me""",
 	"items":[],
-	"exits":{"north":"Canteen","south":"Room 666","east":"Room 347","west":"Room 645"}	
+	"exits":{"north":"Canteen","south":"Room 666","east":"Room 347","west":"Room 645"},
+	"map":(maps["Room 234 map"])	
 }
 room_123={
 	"name":"Room 123",
 	"description":
     """add me""",
 	"items":[],
-	"exits":{"north":"Reception"}	
+	"exits":{"north":"Reception"},
+	"map":(maps["Room 123 map"])	
 }
 room_251={
 	"name":"Room 251",
 	"description":
     """add me""",
 	"items":[],
-	"exits":{"north":"The yard","south":"Room 347","east":"Reception","west":"Canteen"}	
+	"exits":{"north":"The yard","south":"Room 347","east":"Reception","west":"Canteen"},
+	"map":(maps["Room 251 map"])	
 }
 room_347={
 	"name":"Room 347",
 	"description":
     """add me""",
 	"items":[],
-	"exits":{"north":"Room 251","east":"Room 123","west":"Room 234","south":"Room 696"}	
+	"exits":{"north":"Room 251","east":"Room 123","west":"Room 234","south":"Room 696"},
+	"map":(maps["Room 347 map"])	
 }
 room_696={
 	"name":"Room 696",
 	"description":
     """add me""",
 	"items":[],
-	"exits":{"north":"Room 347","west":"666"}	
+	"exits":{"north":"Room 347","west":"666"},
+	"map":(maps["Room 696 map"])	
 }
 rooms={
 	"Office 1":room_Office1,
