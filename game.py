@@ -6,6 +6,26 @@ from characters import *
 from items import *
 from gameparser import *
 
+def random_generate_items():
+
+    #This function will randomly generate items into rooms.
+
+    #It creates a list of all the rooms other than the room the player is starting in.
+    list_of_rooms = []
+    for i in rooms:
+        if not(rooms[i] == Player["current_room"]):
+            list_of_rooms.append(rooms[i])
+
+    #This loops through all the items in the game and spawns them in random rooms
+    for i in items:
+        #A random number is generated in the range of the list, the room with this random number assigned to it is where the item is generated.
+        item_location = randint(0,len(list_of_rooms) - 1)
+
+        #Add the phone to the items in the room
+        list_of_rooms[item_location]["items"].append(items[i])
+        print(list_of_rooms[item_location])
+
+
 def list_of_items(items):
     """This function takes a list of items (see items.py for the definition) and
     returns a comma-separated list of item names (as a string). For example:
@@ -27,7 +47,7 @@ def list_of_items(items):
     for item_list in items:
         itemList.append(item_list['name'])
     return(', '.join(itemList))
-        
+
 def print_room_items(room):
     """This function takes a room as an input and nicely displays a list of items
     found in this room (followed by a blank line). If there are no items in
@@ -55,7 +75,7 @@ def print_room_items(room):
     else:
         print("There is " + list_of_items(room['items']) + " here.")
         print()
-        
+
 def print_inventory_items(items):
     """This function takes a list of inventory items and displays it nicely, in a
     manner similar to print_room_items(). The only difference is in formatting:
@@ -66,7 +86,7 @@ def print_inventory_items(items):
     <BLANKLINE>
 
     """
-    
+
     print("You have " + list_of_items(items) + ".")
     print()
 
@@ -253,31 +273,31 @@ def execute_take(item_id):
     """
 
     global inventory
-    
-    takeItem = []   
+
+    takeItem = []
     for item in current_room['items']:
         takeItem.append(item['id'])
     if item_id in takeItem:
         #print(inventory)
-        inventory = inventory + ([d for d in (current_room['items']) if d.get('id') == item_id]) 
+        inventory = inventory + ([d for d in (current_room['items']) if d.get('id') == item_id])
         print (inventory)
         #print(current_room['items'])
         current_room['items'] = [d for d in (current_room['items']) if d.get('id') != item_id]
         #print(current_room['items'])
         print(item_id + " added to your inventory.")
     else:
-        print("You cannot take that.")   
-    
+        print("You cannot take that.")
+
 
 def execute_drop(item_id):
     """This function takes an item_id as an argument and moves this item from the
     player's inventory to list of items in the current room. However, if there is
     no such item in the inventory, this function prints "You cannot drop that."
     """
-    
+
     global inventory
 
-    dropItem = []   
+    dropItem = []
     for item in inventory:
         dropItem.append(item['id'])
     if item_id in dropItem:
@@ -289,8 +309,8 @@ def execute_drop(item_id):
         #print(inventory)
         print(item_id + " removed from your inventory.")
     else:
-        print("You cannot drop that.") 
-        
+        print("You cannot drop that.")
+
 def execute_open(open_id):
     """This function takes an open_id as an argument and shows a map of the current game.
     """
@@ -325,7 +345,7 @@ def execute_command(command):
             execute_drop(command[1])
         else:
             print("Drop what?")
-            
+
     elif command[0] == "open":
         if len(command) > 1:
             execute_open(command[1])
@@ -380,6 +400,9 @@ def main():
     # Main game loop
     while True:
         # Display game status (room description, inventory etc.)
+
+        random_generate_items()
+
         print_room(current_room)
         print_inventory_items(inventory)
 
@@ -401,4 +424,3 @@ inventory = Player["inventory"]
 
 if __name__ == "__main__":
     main()
-
