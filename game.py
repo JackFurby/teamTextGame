@@ -5,6 +5,7 @@ from location import rooms
 from characters import *
 from items import *
 from gameparser import *
+import shutil
 
 def random_generate_items():
 
@@ -416,16 +417,17 @@ def prox_check(Player_current_room, Hannibal_current_room):
             doc_exit.append(Player_current_room["exits"][l]) #adds room name to list based on direction
             doc_exit = list(set(doc_exit)) #remove duplicates in list
             #print(doc_exit,"doc")
-    #print(set(han_exit) & set(doc_exit), "hi") #checks to see if any items in Doc and Hannibal exit lists match
+    
+    screen_size = shutil.get_terminal_size().columns
     if Hannibal_current_room == Player_current_room: #if Doc and HAnnibal in same room return
         return    
     
     if any(i in han_exit for i in doc_exit) == True: #checks to see if any items in Doc and Hannibal exit lists match
-        print("You hear faint footsteps")
+        print("You hear faint footsteps".center(screen_size))
     
     elif Player_current_room["name"] in han_exit: #if rooms are next to each other print
-        print("\n                                     !!!WARNING!!!")
-        print("                                 You hear steps nearby...")
+        print("!!!WARNING!!!".center(screen_size))
+        print("You hear steps nearby...".center(screen_size))
    
 # This is the entry point of our program
 def main():
