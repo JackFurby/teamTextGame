@@ -427,7 +427,7 @@ def prox_check(Player_current_room, Hannibal_current_room, screen_size):
     
     elif Player_current_room["name"] in han_exit: #if rooms are next to each other print
         print("!!!WARNING!!!".center(screen_size))
-        print("You hear steps nearby...".center(screen_size))
+        print("You hear someone breathing nearby...".center(screen_size))
    
 # This is the entry point of our program
 def main():
