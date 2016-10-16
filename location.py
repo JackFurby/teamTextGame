@@ -118,7 +118,7 @@ room_696={
 	"description":
     """add me""",
 	"items":[],
-	"exits":{"north":"Room 347","west":"666"},
+	"exits":{"north":"Room 347","west":"Room 666"},
 	"map":(maps["Room 696 map"])	
 }
 rooms={

@@ -238,6 +238,7 @@ def is_valid_exit(exits, chosen_exit):
 
 #This function needs no input and changes the Cannibal's position to a new random one
 def cannibal_move():
+    
     play_curr=Players["Doc"]["current_room"]
     exits=Players["Hannibal the cannibal"]["current_room"]["exits"]
     x=len(exits)-1
@@ -249,12 +250,6 @@ def cannibal_move():
         r=r-1
     x=k
     Players["Hannibal the cannibal"]["current_room"]= move(exits, x)
-    #This for loop checks if the cannibal is in a room near the player and alerts him
-    exits=Players["Hannibal the cannibal"]["current_room"]["exits"]
-    for k in exits:
-        if exits[k]==Players["Doc"]["current_room"]["name"]:
-            print("\n                                     !!!WARNING!!!")
-            print("                                 You hear steps nearby...")
 
 def execute_go(direction):
     """This function, given the direction (e.g. "south") updates the current room
@@ -395,11 +390,43 @@ def move(exits, direction):
     >>> move(rooms["Reception"]["exits"], "west") == rooms["Room 123"]
     False
     """
-
+    
     # Next room to go to
     return rooms[exits[direction]]
+    
+def prox_check(Player_current_room, Hannibal_current_room):
+    """This for loop checks if the cannibal is in a room near the player and alerts him
+    """
+    han_exit_dir = [] #list for Hannibal current_room exitis
+    han_exit = [] #list for Hannibal current_room exits names
+    doc_exit_dir = [] #list for Doc current_room exitis
+    doc_exit = [] #list for Doc current_room exits names
+    for k in Hannibal_current_room["exits"]:
+        han_exit_dir.append(k) #add a direction to list
+        #print(han_exit_dir)
+        for l in han_exit_dir:
+            han_exit.append(Hannibal_current_room["exits"][l]) #adds room name to list based on direction
+            han_exit = list(set(han_exit)) #remove duplicates in list
+            #print(han_exit, "han")
 
-
+    for k in Player_current_room["exits"]:
+        doc_exit_dir.append(k) #add a direction to list
+        #print(doc_exit_dir)
+        for l in doc_exit_dir:
+            doc_exit.append(Player_current_room["exits"][l]) #adds room name to list based on direction
+            doc_exit = list(set(doc_exit)) #remove duplicates in list
+            #print(doc_exit,"doc")
+    #print(set(han_exit) & set(doc_exit), "hi") #checks to see if any items in Doc and Hannibal exit lists match
+    if Hannibal_current_room == Player_current_room: #if Doc and HAnnibal in same room return
+        return    
+    
+    if any(i in han_exit for i in doc_exit) == True: #checks to see if any items in Doc and Hannibal exit lists match
+        print("You hear faint footsteps")
+    
+    elif Player_current_room["name"] in han_exit: #if rooms are next to each other print
+        print("\n                                     !!!WARNING!!!")
+        print("                                 You hear steps nearby...")
+   
 # This is the entry point of our program
 def main():
 
@@ -416,6 +443,7 @@ def main():
         # Execute the player's command
         if execute_command(command)==False:
             break
+        prox_check(Players["Doc"]["current_room"], Players["Hannibal the cannibal"]["current_room"])
 
 # Are we being run as a script? If so, run main().
 # '__main__' is the name of the scope in which top-level code executes.
