@@ -220,7 +220,7 @@ def print_menu(exits, room_items, inv_items):
 
 
 def is_valid_exit(exits, chosen_exit):
-    """This function checks, given a dictionary "exits" (see map.py) and
+    """This function checks, given a dictionary "exits" and
     a players's choice "chosen_exit" whether the player has chosen a valid exit.
     It returns True if the exit is valid, and False otherwise. Assume that
     the name of the exit has been normalised by the function normalise_input().
@@ -239,6 +239,7 @@ def is_valid_exit(exits, chosen_exit):
 
 #This function needs no input and changes the Cannibal's position to a new random one
 def cannibal_move():
+    """ The function moves Hannibal to a new room based on his available exits"""
     
     play_curr=Players["Doc"]["current_room"]
     exits=Players["Hannibal the cannibal"]["current_room"]["exits"]
@@ -317,7 +318,7 @@ def execute_command(command):
     """This function takes a command (a list of words as returned by
     normalise_input) and, depending on the type of action (the first word of
     the command: "go", "take", or "drop"), executes either execute_go,
-    execute_take, or execute_drop, supplying the second word as the argument.
+    execute_take, execute_drop, or execute_open supplying the second word as the argument.
 
     """
 
@@ -396,8 +397,7 @@ def move(exits, direction):
     return rooms[exits[direction]]
     
 def prox_check(Player_current_room, Hannibal_current_room, screen_size):
-    """This for loop checks if the cannibal is in a room near the player and alerts him
-    """
+    """This for loop checks if the cannibal is in a room near the player and alerts him"""
     han_exit_dir = [] #list for Hannibal current_room exitis
     han_exit = [] #list for Hannibal current_room exits names
     doc_exit_dir = [] #list for Doc current_room exitis
