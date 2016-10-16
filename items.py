@@ -14,7 +14,7 @@ item_key = {
     "description":
     """You can use this key to open important doors..."""
 }
-item_Knife = {
+item_knife = {
     "id": "Knife",
 
     "name": "Knife",
@@ -26,5 +26,6 @@ item_Knife = {
 #Added items dictionary so we can access items without knowing their location
 items = {
 "phone": item_phone,
-"key": item_key
+"key": item_key,
+"knife": item_knife
 }

@@ -395,7 +395,7 @@ def move(exits, direction):
     # Next room to go to
     return rooms[exits[direction]]
     
-def prox_check(Player_current_room, Hannibal_current_room):
+def prox_check(Player_current_room, Hannibal_current_room, screen_size):
     """This for loop checks if the cannibal is in a room near the player and alerts him
     """
     han_exit_dir = [] #list for Hannibal current_room exitis
@@ -418,7 +418,7 @@ def prox_check(Player_current_room, Hannibal_current_room):
             doc_exit = list(set(doc_exit)) #remove duplicates in list
             #print(doc_exit,"doc")
     
-    screen_size = shutil.get_terminal_size().columns
+    
     if Hannibal_current_room == Player_current_room: #if Doc and HAnnibal in same room return
         return    
     
@@ -445,11 +445,13 @@ def main():
         # Execute the player's command
         if execute_command(command)==False:
             break
-        prox_check(Players["Doc"]["current_room"], Players["Hannibal the cannibal"]["current_room"])
+        prox_check(Players["Doc"]["current_room"], Players["Hannibal the cannibal"]["current_room"], screen_size)
 
 # Are we being run as a script? If so, run main().
 # '__main__' is the name of the scope in which top-level code executes.
 # See https://docs.python.org/3.4/library/__main__.html for explanation
+
+screen_size = shutil.get_terminal_size().columns
 
 if __name__ == "__main__":
     main()
