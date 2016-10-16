@@ -6,6 +6,9 @@ from characters import *
 from items import *
 from gameparser import *
 import shutil
+import winsound
+
+
 
 def random_generate_items():
 
@@ -329,6 +332,7 @@ def execute_command(command):
         if len(command) > 1:
             execute_go(command[1])
             cannibal_move()
+            winsound.PlaySound('audio/blank.wav', winsound.SND_ASYNC)
 
         else:
             print("Go where?")
@@ -397,7 +401,8 @@ def move(exits, direction):
     return rooms[exits[direction]]
     
 def prox_check(Player_current_room, Hannibal_current_room, screen_size):
-    """This for loop checks if the cannibal is in a room near the player and alerts him"""
+    """This for loop checks if the cannibal is in a room near the player and alerts him"""    
+    
     han_exit_dir = [] #list for Hannibal current_room exitis
     han_exit = [] #list for Hannibal current_room exits names
     doc_exit_dir = [] #list for Doc current_room exitis
@@ -424,10 +429,12 @@ def prox_check(Player_current_room, Hannibal_current_room, screen_size):
     
     if any(i in han_exit for i in doc_exit) == True: #checks to see if any items in Doc and Hannibal exit lists match
         print("You hear faint footsteps".center(screen_size))
+        winsound.PlaySound('audio/footsteps.wav', winsound.SND_ASYNC | winsound.SND_LOOP)
     
     elif Player_current_room["name"] in han_exit: #if rooms are next to each other print
         print("!!!WARNING!!!".center(screen_size))
         print("You hear someone breathing nearby...".center(screen_size))
+        winsound.PlaySound('audio/breathing.wav', winsound.SND_ASYNC | winsound.SND_LOOP)
    
 # This is the entry point of our program
 def main():
