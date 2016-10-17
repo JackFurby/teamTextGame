@@ -353,9 +353,9 @@ def execute_search(search_id):
         Players["Doc"]["current_room"]["items"] = Players["Doc"]["current_room"]["items_hidden"]
     
         if Players["Doc"]["current_room"]["items"] == []:
-            print("You found nothing")
+            print("\n""You found nothing")
         else:
-            print("Item(s) found")
+            print("\n""Item(s) found")
         Players["Doc"]["current_room"]["searched"] = True
     
 def execute_command(command):
