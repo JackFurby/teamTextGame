@@ -26,10 +26,11 @@ def random_generate_items():
     #This loops through all the items in the game and spawns them in random rooms
     for i in items:
         #A random number is generated in the range of the list, the room with this random number assigned to it is where the item is generated.
-        item_location = randint(0, len(list_of_rooms) - 1)
+        if i["name"]!="Knife" or i["name"]!="Fire extinguisher":
+            item_location = randint(0, len(list_of_rooms) - 1)
 
-        #Add the phone to the items in the room
-        list_of_rooms[item_location]["items_hidden"].append(items[i])
+            #Add the phone to the items in the room
+            list_of_rooms[item_location]["items_hidden"].append(items[i])
 
 
 
