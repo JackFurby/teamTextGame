@@ -13,7 +13,8 @@ room_Office2={
 	"name":"Office 2",
 	"description":
     """This office is big and has a number of portraits hanging on the walls.
-A desk sits in the middle. Other than that the room is bare.""",
+A desk sits in the middle. There is a phone hanging on the wall and under closer
+inspection it still works. Other than that the room is bare.""",
 	"items":[],
 	"exits":{"north":"Emergency room","south":"Canteen","east":"The yard","west":"Therapy room"},
 	"map":(maps["Office 2 map"])	
@@ -22,8 +23,7 @@ room_Reception={
 	"name":"Reception",
 	"description":
     """The reception is more like an extension of the hall. There are two
-chairs behind the desk and files litter both the floor and workspace. There
-is a phone hanging on the wall and under closer inspection it still works.""",
+chairs behind the desk and files litter both the floor and workspace.""",
 	"items":[],
 	"exits":{"south":"Room 123","west":"Emergency room"},
 	"map":(maps["Reception map"])

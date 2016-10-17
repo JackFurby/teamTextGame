@@ -8,7 +8,7 @@ Things to do
  
   -use of graphics (image to ascii)?
 
-2. end game
+2. end game - added checks to soo if game is over, need to add cases where the values being checked will change
   -Die
   -live
   -other?
