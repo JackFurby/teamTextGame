@@ -6,7 +6,6 @@ from characters import *
 from items import *
 from gameparser import *
 import shutil
-
 import simpleaudio as sa
 
 
