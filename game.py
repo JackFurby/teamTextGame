@@ -244,11 +244,6 @@ def is_valid_exit(curr_room, chosen_exit):
     True
     """    
     lrooms=[]
-    for ex in curr_room["exits"]:
-        print(curr_room["name"])
-        print(curr_room["exits"][ex])
-        lrooms.append(str(curr_room["name"]+ex))
-    print(lrooms)
     if chosen_exit in curr_room["exits"]:
         if curr_room["name"] in lrooms:
             if lockedRooms[curr_room]["name"]==curr_room["exits"][chosen_exit]["name"]:
@@ -257,6 +252,9 @@ def is_valid_exit(curr_room, chosen_exit):
             else:
                 return True
         elif curr_room["exits"][chosen_exit] in lrooms:
+            for ex in curr_room["exits"]:
+                lrooms.append(str(curr_room["name"]+ex))
+            print(lrooms)
             print (lockedRooms)
             print([curr_room["name"]])
             if lockedRooms[curr_room["name"]]["exits"][chosen_exit]==curr_room["name"]:
@@ -286,6 +284,7 @@ def cannibal_move():
     x=k
     if is_valid_exit(Players["Hannibal the cannibal"]["current_room"],x):
         Players["Hannibal the cannibal"]["current_room"]= move(Players["Hannibal the cannibal"]["current_room"]["exits"], x)
+
 def execute_go(direction):
     """This function, given the direction (e.g. "south") updates the current room
     to reflect the movement of the player if the direction is a valid exit
@@ -456,12 +455,12 @@ def prox_check(Player_current_room, Hannibal_current_room, screen_size):
         return    
     
     if any(i in han_exit for i in doc_exit) == True: #checks to see if any items in Doc and Hannibal exit lists match
-        print("You hear faint footsteps".center(screen_size))
+        print("\nYou hear faint footsteps".center(screen_size))
         wave_obj = sa.WaveObject.from_wave_file('audio/footsteps.wav')
         play_obj = wave_obj.play()
     
     elif Player_current_room["name"] in han_exit: #if rooms are next to each other print
-        print("!!!WARNING!!!".center(screen_size))
+        print("\n!!!WARNING!!!".center(screen_size))
         print("You hear someone breathing nearby...".center(screen_size))
         wave_obj = sa.WaveObject.from_wave_file('audio/breathing.wav')
         play_obj = wave_obj.play()
