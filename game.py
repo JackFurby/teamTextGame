@@ -223,7 +223,8 @@ def print_menu(exits, room_items, inv_items):
     for items in inv_items:
         print("DROP", items['id'].upper(), "to drop your", items['id'] + ".")
     print("OPEN MAP to display map.")
-
+    if Players["Doc"]["current_room"]["searched"] == False:
+        print("SEARCH ROOM to search room.")
     print("What do you want to do?")
 
 
@@ -355,6 +356,7 @@ def execute_search(search_id):
             print("You found nothing")
         else:
             print("Item(s) found")
+        Players["Doc"]["current_room"]["searched"] = True
     
 def execute_command(command):
     """This function takes a command (a list of words as returned by

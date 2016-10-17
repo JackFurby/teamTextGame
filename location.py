@@ -7,6 +7,7 @@ room_Office1={
 There is a door to the east leading to Room 483.""",
 	"items":[],
 	"items_hidden":[],
+	"searched":False,
 	"exits":{"east":"Room 483"},
 	"map":(maps["Office 1 map"])
 }
@@ -18,6 +19,7 @@ A desk sits in the middle. There is a phone hanging on the wall and under closer
 inspection it still works. Other than that the room is bare.""",
 	"items":[],
 	"items_hidden":[],
+	"searched":False,
 	"exits":{"north":"Emergency room","south":"Canteen","east":"The yard","west":"Therapy room"},
 	"map":(maps["Office 2 map"])	
 }
@@ -28,6 +30,7 @@ room_Reception={
 chairs behind the desk and files litter both the floor and workspace.""",
 	"items":[],
 	"items_hidden":[],
+	"searched":False,
 	"exits":{"south":"Room 123","west":"Emergency room"},
 	"map":(maps["Reception map"])
 }
@@ -37,6 +40,7 @@ room_Therapy={
     """add me""",
 	"items":[],
 	"items_hidden":[],
+	"searched":False,
 	"exits":{"east":"Office 2","south":"Room 483"},
 	"map":(maps["Therapy room map"])
 }
@@ -46,6 +50,7 @@ room_Canteen={
     """add me""",
 	"items":[],
 	"items_hidden":[],
+	"searched":False,
 	"exits":{"west":"Room 483","south":"Room 234","east":"Room 251","north":"Office 2"},
 	"map":(maps["Canteen map"])
 }
@@ -55,6 +60,7 @@ room_666={
     """add me""",
 	"items":[],
 	"items_hidden":[],
+	"searched":False,
 	"exits":{"north":"Room 234","east":"Room 696"},
 	"map":(maps["Room 666 map"])
 }
@@ -66,6 +72,7 @@ and a tablet. There's a switch on the wall with an unclear label, it seems like 
 effect on the locked doors.""",
 	"items":[],
 	"items_hidden":[],
+	"searched":False,
 	"exits":{"south":"Office 2"},
 	"map":(maps["Emergency room map"])
 }
@@ -75,6 +82,7 @@ room_Yard={
     """add me""",
 	"items":[],
 	"items_hidden":[],
+	"searched":False,
 	"exits":{"west":"Office 2","south":"Room 251"},
 	"map":(maps["The yard map"])
 }
@@ -84,6 +92,7 @@ room_483={
     """add me""",
 	"items":[],
 	"items_hidden":[],
+	"searched":False,
 	"exits":{"north":"Therapy room","west":"Office 1","south":"Room 645","east":"Canteen"},
 	"map":(maps["Room 483 map"])	
 }
@@ -93,6 +102,7 @@ room_645={
     """add me""",
 	"items":[],
 	"items_hidden":[],
+	"searched":False,
 	"exits":{"north":"Room 483","east":"Room 234"},
 	"map":(maps["Room 645 map"])	
 }
@@ -102,6 +112,7 @@ room_234={
     """add me""",
 	"items":[],
 	"items_hidden":[],
+	"searched":False,
 	"exits":{"north":"Canteen","south":"Room 666","east":"Room 347","west":"Room 645"},
 	"map":(maps["Room 234 map"])	
 }
@@ -111,6 +122,7 @@ room_123={
     """add me""",
 	"items":[],
 	"items_hidden":[],
+	"searched":False,
 	"exits":{"north":"Reception"},
 	"map":(maps["Room 123 map"])	
 }
@@ -120,6 +132,7 @@ room_251={
     """add me""",
 	"items":[],
 	"items_hidden":[],
+	"searched":False,
 	"exits":{"north":"The yard","south":"Room 347","east":"Reception","west":"Canteen"},
 	"map":(maps["Room 251 map"])	
 }
@@ -129,6 +142,7 @@ room_347={
     """add me""",
 	"items":[],
 	"items_hidden":[],
+	"searched":False,
 	"exits":{"north":"Room 251","east":"Room 123","west":"Room 234","south":"Room 696"},
 	"map":(maps["Room 347 map"])	
 }
@@ -138,6 +152,7 @@ room_696={
     """add me""",
 	"items":[],
 	"items_hidden":[],
+	"searched":False,
 	"exits":{"north":"Room 347","west":"Room 666"},
 	"map":(maps["Room 696 map"])	
 }
