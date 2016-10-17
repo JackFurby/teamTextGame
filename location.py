@@ -55,7 +55,9 @@ room_666={
 room_ER={
 	"name":"Emergency room",
 	"description":
-    """add me""",
+    """The emergency room is pretty empty, as it had been sacked. You can see on a table some cameras
+and a tablet. There's a switch on the wall with an unclear label, it seems like it will have some 
+effect on the locked doors.""",
 	"items":[],
 	"exits":{"south":"Office 2"},
 	"map":(maps["Emergency room map"])
@@ -140,4 +142,11 @@ rooms={
 	"Room 347":room_347,
 	"Room 251":room_251,
 	"Room 696":room_696
+}
+lockedRooms={
+	"Canteen":"Room 483",
+	"Canteen":"Room 234",
+	"Canteen":"Room 251",
+	"Reception":"Room 251",
+	"Reception":"Room 123"
 }
