@@ -243,25 +243,25 @@ def is_valid_exit(curr_room, chosen_exit):
     >>> is_valid_exit(rooms["Room 123"]["exits"], "north")
     True
     """    
-    lrooms=[]
+    goingrooms=[]
+    inrooms=[]
+    for ex in curr_room["exits"]:
+        goingrooms.append(str(curr_room["exits"][ex]+ex))
+        inrooms.append(str(curr_room["name"]+ex))
     if chosen_exit in curr_room["exits"]:
-        if curr_room["name"] in lrooms:
-            if lockedRooms[curr_room]["name"]==curr_room["exits"][chosen_exit]["name"]:
-                print("\nSorry this path is blocked")
-                return False
-            else:
-                return True
-        elif curr_room["exits"][chosen_exit] in lrooms:
-            for ex in curr_room["exits"]:
-                lrooms.append(str(curr_room["name"]+ex))
-            print(lrooms)
-            print (lockedRooms)
-            print([curr_room["name"]])
-            if lockedRooms[curr_room["name"]]["exits"][chosen_exit]==curr_room["name"]:
-                print("\nSorry this path is blocked")
-                return False
-            else:
-                return True
+        for name in lockedRooms:
+            if name in goingrooms:
+                if lockedRooms[name] in inrooms:
+                    print("\nSorry this path is blocked")
+                    return False
+                else:
+                    return True
+            elif name in inrooms:
+                if lockedRooms[name] in goingrooms:
+                    print("\nSorry this path is blocked")
+                    return False
+                else:
+                    return True
         else:
             return True
     else:
