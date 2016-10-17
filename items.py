@@ -23,10 +23,19 @@ item_knife = {
     "description":
     """This knife is very sharp. It would be great to use on some succulent steak"""
 }
+item_extinguisher={
+    "id": "extinguisher"
+
+    "name": "Fire extinguisher"
+
+    "description":
+    """This fire extinguisher looks like its working"""
+}
 
 #Added items dictionary so we can access items without knowing their location
 items = {
 "phone": item_phone,
 "key": item_key,
 "knife": item_knife
+"extinguisher": item_extinguisher
 }
