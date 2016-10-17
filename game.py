@@ -6,7 +6,7 @@ from characters import *
 from items import *
 from gameparser import *
 import shutil
-import winsound
+
 import simpleaudio as sa
 
 
@@ -333,7 +333,6 @@ def execute_command(command):
         if len(command) > 1:
             execute_go(command[1])
             cannibal_move()
-            winsound.PlaySound('audio/blank.wav', winsound.SND_ASYNC)
             sa.stop_all()
 
         else:
