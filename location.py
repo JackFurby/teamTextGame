@@ -141,3 +141,10 @@ rooms={
 	"Room 251":room_251,
 	"Room 696":room_696
 }
+lockedRooms={
+	"Canteen":"Room 483"
+	"Canteen":"Room 234"
+	"Canteen":"Room 251"
+	"Reception":"Room 251"
+	"Reception":"Room 123"
+}
