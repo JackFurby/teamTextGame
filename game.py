@@ -3,6 +3,7 @@
 from random import randint
 from location import rooms
 from location import lockedRooms
+from displaymenu import *
 from characters import *
 from items import *
 from ending import *
@@ -489,6 +490,8 @@ def prox_check(Player_current_room, Hannibal_current_room, screen_size):
 # This is the entry point of our program
 def main():
 
+    # Display the start menu
+    display_start_menu()
     # Add each item to a random room
     random_generate_items()
     # Works out size of terminal to be used with printing warnings
