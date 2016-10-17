@@ -5,13 +5,16 @@ from location import rooms
 Player={
   "name":"Doc",
   "current_room":rooms["Office 1"],
-  "inventory":[]
+  "inventory":[],
+  "alive": True,
+  "escape": False
 }
 Cannibal={
   "name":"Hannibal the cannibal",
   "current_room":rooms["Room 666"],
   "inventory":["Knife"],
-  "file":""
+  "file":"",
+  "alive":True
 }
 Leeroy_Jenkins={
   "name":"Leerooooooooy Jenkiiiiiiins",
@@ -20,37 +23,43 @@ Leeroy_Jenkins={
   "inventory":[],
   "history":"The one and only. The mighty. No need to say more.",
   "reason_for_imprisonment": "Failed to obey the guild master's orders. Got the whole group killed",
-  "file":""
+  "file":"",
+  "alive": True
 }
 Patient_483={
   "name":"Patient 483",
   "current_room":rooms["Office 1"],
   "inventory":[],
-  "file":""
+  "file":"",
+  "alive": True
   }
 Patient_645={
   "name":"Patient 645",
   "current_room":rooms["Office 1"],
   "inventory":[],
-  "file":""
+  "file":"",
+  "alive": True
   }
 Patient_234={
   "name":"Patient 234",
   "current_room":rooms["Office 1"],
   "inventory":[],
-  "file":""
+  "file":"",
+  "alive": True
 }
 Patient_251={
   "name":"Patient 251",
   "current_room":rooms["Office 1"],
   "inventory":[],
-  "file":""
+  "file":"",
+  "alive": True
 }
 Patient_347={
   "name":"Patient 347",
   "current_room":rooms["Office 1"],
   "inventory":[],
-  "file":""
+  "file":"",
+  "alive": True
 }
 Players={
   "Doc":Player,

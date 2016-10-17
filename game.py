@@ -4,6 +4,7 @@ from random import randint
 from location import rooms
 from characters import *
 from items import *
+from ending import *
 from gameparser import *
 import shutil
 import simpleaudio as sa
@@ -441,26 +442,40 @@ def prox_check(Player_current_room, Hannibal_current_room, screen_size):
 # This is the entry point of our program
 def main():
 
-    #Add each item to a random room
+    # Add each item to a random room
     random_generate_items()
+    # Works out size of terminal to be used with printing warnings
+    screen_size = shutil.get_terminal_size().columns
     # Main game loop
     while True:
-        # Display game status (room description, inventory etc.)
-        print_room(Players["Doc"]["current_room"])
-        print_inventory_items(Players["Doc"]["inventory"])
-
-        # Show the menu with possible actions and ask the player
-        command = menu(Players["Doc"]["current_room"]["exits"], Players["Doc"]["current_room"]["items"], Players["Doc"]["inventory"])
-        # Execute the player's command
-        if execute_command(command)==False:
+        
+        if Players["Doc"]["escape"] == True:
+            print(endings["escape"])
             break
-        prox_check(Players["Doc"]["current_room"], Players["Hannibal the cannibal"]["current_room"], screen_size)
+        
+        elif Players["Doc"]["alive"] == False:
+            print(endings["die"])
+            break
+            
+        elif Players["Hannibal the cannibal"]["alive"] == False:
+            print(endings["live"])
+            break
+        
+        else:
+            # Display game status (room description, inventory etc.)
+            print_room(Players["Doc"]["current_room"])
+            print_inventory_items(Players["Doc"]["inventory"])
 
+            # Show the menu with possible actions and ask the player
+            command = menu(Players["Doc"]["current_room"]["exits"], Players["Doc"]["current_room"]["items"], Players["Doc"]["inventory"])
+            # Execute the player's command
+            if execute_command(command)==False:
+                break
+            prox_check(Players["Doc"]["current_room"], Players["Hannibal the cannibal"]["current_room"], screen_size)
+                
 # Are we being run as a script? If so, run main().
 # '__main__' is the name of the scope in which top-level code executes.
 # See https://docs.python.org/3.4/library/__main__.html for explanation
-
-screen_size = shutil.get_terminal_size().columns
 
 if __name__ == "__main__":
     main()
