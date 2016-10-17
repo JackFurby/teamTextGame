@@ -32,9 +32,9 @@ def image_to_ascii(image_input, x, y):
  
     return(str) #prints result
 
-end_live = image_to_ascii("images\youlive.jpg", 80, 30)
-end_die = image_to_ascii("images\youdied.jpg", 80, 30)
-end_escape = image_to_ascii("images\youescaped.jpg", 110, 30)
+end_live = image_to_ascii("images/youlive.jpg", 80, 30)
+end_die = image_to_ascii("images/youdied.jpg", 80, 30)
+end_escape = image_to_ascii("images/youescaped.jpg", 110, 30)
 
 
 # all possible endings

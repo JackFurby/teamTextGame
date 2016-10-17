@@ -4,7 +4,8 @@ item_phone = {
     "name": "Samsung Galaxy Note 7",
 
     "description":
-    """You have 15% battery left. lets hope it does not explode when it is charged..."""
+    """You have 15% battery left but unfortunately no signal.
+lets hope it does not explode when it is charged..."""
 }
 item_key = {
     "id": "key",
