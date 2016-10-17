@@ -17,6 +17,7 @@ def random_generate_items():
 
     #It creates a list of all the rooms other than the room the player is starting in.
     list_of_rooms = []
+
     for i in rooms:
         if not(rooms[i] == Player["current_room"] or rooms[i]==rooms["Reception"]):
             list_of_rooms.append(rooms[i])
@@ -24,10 +25,11 @@ def random_generate_items():
     #This loops through all the items in the game and spawns them in random rooms
     for i in items:
         #A random number is generated in the range of the list, the room with this random number assigned to it is where the item is generated.
-        item_location = randint(0,len(list_of_rooms) - 1)
+        item_location = randint(0, len(list_of_rooms) - 1)
 
         #Add the phone to the items in the room
         list_of_rooms[item_location]["items"].append(items[i])
+
 
 
 def list_of_items(items):
@@ -51,6 +53,7 @@ def list_of_items(items):
     for item_list in items:
         itemList.append(item_list['name'])
     return(', '.join(itemList))
+
 
 def print_room_items(room):
     """This function takes a room as an input and nicely displays a list of items
@@ -298,7 +301,7 @@ def execute_drop(item_id):
         dropItem.append(item['id'])
     if item_id in dropItem:
         #print(Players["Doc"]["current_room"]['items'])
-        Players["Doc"]["current_room"]['items'] = Players["Doc"]["current_room"]['items'] + [d for d in inventory if d.get('id') == item_id]
+        Players["Doc"]["current_room"]['items'] = Players["Doc"]["current_room"]['items'] + [d for d in Player["inventory"] if d.get('id') == item_id]
         #print(Players["Doc"]["current_room"]['items'])
         #print(inventory)
         Players["Doc"]["inventory"] = [d for d in Players["Doc"]["inventory"] if d.get('id') != item_id]
