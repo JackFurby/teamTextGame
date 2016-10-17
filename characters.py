@@ -12,7 +12,7 @@ Player={
 Cannibal={
   "name":"Hannibal the cannibal",
   "current_room":rooms["Room 666"],
-  "inventory":["Knife"],
+  "inventory":["knife"],
   "file":"",
   "alive":True
 }
