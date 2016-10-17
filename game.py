@@ -29,7 +29,7 @@ def random_generate_items():
         item_location = randint(0, len(list_of_rooms) - 1)
 
         #Add the phone to the items in the room
-        list_of_rooms[item_location]["items"].append(items[i])
+        list_of_rooms[item_location]["items_hidden"].append(items[i])
 
 
 
@@ -223,7 +223,8 @@ def print_menu(exits, room_items, inv_items):
     for items in inv_items:
         print("DROP", items['id'].upper(), "to drop your", items['id'] + ".")
     print("OPEN MAP to display map.")
-
+    if Players["Doc"]["current_room"]["searched"] == False:
+        print("SEARCH ROOM to search room.")
     print("What do you want to do?")
 
 
@@ -343,7 +344,20 @@ def execute_open(open_id):
             print(line)
     else:
         return
-        
+    
+def execute_search(search_id):
+    """this function allows the user to search the room they are currently in to find
+    items in the room and possibly more things to do"""
+    
+    if search_id == "room":
+        Players["Doc"]["current_room"]["items"] = Players["Doc"]["current_room"]["items_hidden"]
+    
+        if Players["Doc"]["current_room"]["items"] == []:
+            print("You found nothing")
+        else:
+            print("Item(s) found")
+        Players["Doc"]["current_room"]["searched"] = True
+    
 def execute_command(command):
     """This function takes a command (a list of words as returned by
     normalise_input) and, depending on the type of action (the first word of
@@ -360,7 +374,6 @@ def execute_command(command):
             execute_go(command[1])
             cannibal_move()
             sa.stop_all()
-
         else:
             print("Go where?")
 
@@ -381,6 +394,14 @@ def execute_command(command):
             execute_open(command[1])
         else:
             print("Open what?")
+            
+    elif command[0] == "search":
+        if len(command) > 1:
+            execute_search(command[1])
+            cannibal_move()
+            sa.stop_all()
+        else:
+            print("cannot search that")
       
     #Way to exit the game without having to crash it
     elif command[0] == "exit":
@@ -455,12 +476,12 @@ def prox_check(Player_current_room, Hannibal_current_room, screen_size):
         return    
     
     if any(i in han_exit for i in doc_exit) == True: #checks to see if any items in Doc and Hannibal exit lists match
-        print("\nYou hear faint footsteps".center(screen_size))
+        print("\n", "You hear faint footsteps".center(screen_size))
         wave_obj = sa.WaveObject.from_wave_file('audio/footsteps.wav')
         play_obj = wave_obj.play()
     
     elif Player_current_room["name"] in han_exit: #if rooms are next to each other print
-        print("\n!!!WARNING!!!".center(screen_size))
+        print("\n", "!!!WARNING!!!".center(screen_size))
         print("You hear someone breathing nearby...".center(screen_size))
         wave_obj = sa.WaveObject.from_wave_file('audio/breathing.wav')
         play_obj = wave_obj.play()
