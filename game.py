@@ -226,7 +226,7 @@ def print_menu(exits, room_items, inv_items):
     print("What do you want to do?")
 
 
-def is_valid_exit(exits, chosen_exit):
+def is_valid_exit(curr_room, chosen_exit):
     """This function checks, given a dictionary "exits" and
     a players's choice "chosen_exit" whether the player has chosen a valid exit.
     It returns True if the exit is valid, and False otherwise. Assume that
@@ -242,7 +242,24 @@ def is_valid_exit(exits, chosen_exit):
     >>> is_valid_exit(rooms["Room 123"]["exits"], "north")
     True
     """
-    return chosen_exit in exits
+    if curr_room["name"] in lockedRooms:
+        if lockedRooms[curr_room]["name"]==curr_room["exits"][direction]["name"]:
+            print("\nSorry this path is blocked")
+            return False
+        elif chosen_exit in curr_room["exits"]:
+            return True
+        else:
+            print("\nYou cannot go there")
+    elif curr_room["exits"][direction]["name"] in lockedRooms:
+        if lockedRooms[curr_room]["exits"][direction]["name"]==curr_room["name"]:
+            print("\nSorry this path is blocked")
+            return False
+        elif chosen_exit in curr_room["exits"]:
+            return True
+        else:
+            print("\nYou cannot go there")
+    else:
+        return chosen_exit in curr_room["exits"]
 
 #This function needs no input and changes the Cannibal's position to a new random one
 def cannibal_move():
@@ -258,18 +275,16 @@ def cannibal_move():
             break
         r=r-1
     x=k
-    Players["Hannibal the cannibal"]["current_room"]= move(exits, x)
-
+    if is_valid_exit(Players["Hannibal the cannibal"]["current_room"],x):
+        Players["Hannibal the cannibal"]["current_room"]= move(Players["Hannibal the cannibal"]["current_room"]["exits"], x)
 def execute_go(direction):
     """This function, given the direction (e.g. "south") updates the current room
     to reflect the movement of the player if the direction is a valid exit
     (and prints the name of the room into which the player is
     moving). Otherwise, it prints "You cannot go there."
     """
-    if is_valid_exit(Players["Doc"]["current_room"]['exits'], direction) == True:
-        Players["Doc"]["current_room"] = move(Players["Doc"]["current_room"]['exits'], direction)
-    else:
-        print("\nYou cannot go there.")
+    if is_valid_exit(Players["Doc"]["current_room"], direction):
+        Players["Doc"]["current_room"] = move(Players["Doc"]["current_room"]["exits"], direction)
 def execute_take(item_id):
     """This function takes an item_id as an argument and moves this item from the
     list of items in the current room to the player's inventory. However, if
