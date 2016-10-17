@@ -2,6 +2,7 @@
 
 from random import randint
 from location import rooms
+from location import lockedRooms
 from characters import *
 from items import *
 from ending import *
@@ -241,25 +242,33 @@ def is_valid_exit(curr_room, chosen_exit):
     False
     >>> is_valid_exit(rooms["Room 123"]["exits"], "north")
     True
-    """
-    if curr_room["name"] in lockedRooms:
-        if lockedRooms[curr_room]["name"]==curr_room["exits"][direction]["name"]:
-            print("\nSorry this path is blocked")
-            return False
-        elif chosen_exit in curr_room["exits"]:
-            return True
+    """    
+    lrooms=[]
+    for ex in curr_room["exits"]:
+        print(curr_room["name"])
+        print(curr_room["exits"][ex])
+        lrooms.append(str(curr_room["name"]+ex))
+    print(lrooms)
+    if chosen_exit in curr_room["exits"]:
+        if curr_room["name"] in lrooms:
+            if lockedRooms[curr_room]["name"]==curr_room["exits"][chosen_exit]["name"]:
+                print("\nSorry this path is blocked")
+                return False
+            else:
+                return True
+        elif curr_room["exits"][chosen_exit] in lrooms:
+            print (lockedRooms)
+            print([curr_room["name"]])
+            if lockedRooms[curr_room["name"]]["exits"][chosen_exit]==curr_room["name"]:
+                print("\nSorry this path is blocked")
+                return False
+            else:
+                return True
         else:
-            print("\nYou cannot go there")
-    elif curr_room["exits"][direction]["name"] in lockedRooms:
-        if lockedRooms[curr_room]["exits"][direction]["name"]==curr_room["name"]:
-            print("\nSorry this path is blocked")
-            return False
-        elif chosen_exit in curr_room["exits"]:
             return True
-        else:
-            print("\nYou cannot go there")
     else:
-        return chosen_exit in curr_room["exits"]
+        print("\nYou cannot go there")
+        return False
 
 #This function needs no input and changes the Cannibal's position to a new random one
 def cannibal_move():
