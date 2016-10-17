@@ -15,7 +15,7 @@ item_key = {
     """You can use this key to open important doors..."""
 }
 item_knife = {
-    "id": "Knife",
+    "id": "knife",
 
     "name": "Knife",
 
