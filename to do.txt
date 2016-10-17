@@ -25,7 +25,7 @@ Things to do
 
 6. AI
 
-7. search command
+7. search command - added 
   -possibly used to display items in a room
   -if used hannibal moves
   -perhaps multiple searches of a room nessery to show everything (random selection of what is found)?
