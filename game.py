@@ -7,6 +7,7 @@ from items import *
 from gameparser import *
 import shutil
 import winsound
+import simpleaudio as sa
 
 
 
@@ -333,6 +334,7 @@ def execute_command(command):
             execute_go(command[1])
             cannibal_move()
             winsound.PlaySound('audio/blank.wav', winsound.SND_ASYNC)
+            sa.stop_all()
 
         else:
             print("Go where?")
@@ -429,12 +431,14 @@ def prox_check(Player_current_room, Hannibal_current_room, screen_size):
     
     if any(i in han_exit for i in doc_exit) == True: #checks to see if any items in Doc and Hannibal exit lists match
         print("You hear faint footsteps".center(screen_size))
-        winsound.PlaySound('audio/footsteps.wav', winsound.SND_ASYNC | winsound.SND_LOOP)
+        wave_obj = sa.WaveObject.from_wave_file('audio/footsteps.wav')
+        play_obj = wave_obj.play()
     
     elif Player_current_room["name"] in han_exit: #if rooms are next to each other print
         print("!!!WARNING!!!".center(screen_size))
         print("You hear someone breathing nearby...".center(screen_size))
-        winsound.PlaySound('audio/breathing.wav', winsound.SND_ASYNC | winsound.SND_LOOP)
+        wave_obj = sa.WaveObject.from_wave_file('audio/breathing.wav')
+        play_obj = wave_obj.play()
    
 # This is the entry point of our program
 def main():
