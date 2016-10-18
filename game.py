@@ -342,6 +342,9 @@ def cannibal_move():
     x=k
     if is_valid_exit(Players["Hannibal the cannibal"]["current_room"],x,"Hannibal"):
         Players["Hannibal the cannibal"]["current_room"]= move(Players["Hannibal the cannibal"]["current_room"]["exits"], x)
+        
+    if Players["Hannibal the cannibal"]["current_room"]["name"] == Players["Doc"]["current_room"]["name"]:
+        print("Hannibal and Doc in same room (Hannibal move)")
 
 def move(exits, direction):
     """This function returns the room into which the player will move if, from a
@@ -412,6 +415,9 @@ def execute_go(direction):
     """
     if is_valid_exit(Players["Doc"]["current_room"], direction,"Doc"):
         Players["Doc"]["current_room"] = move(Players["Doc"]["current_room"]["exits"], direction)
+    
+    if Players["Doc"]["current_room"]["name"] == Players["Hannibal the cannibal"]["current_room"]["name"]:
+        print("Hannibal and Doc in same room (Doc move)")
 
 def execute_take(item_id):
     """This function takes an item_id as an argument and moves this item from the
