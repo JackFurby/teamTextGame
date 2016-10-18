@@ -27,7 +27,7 @@ def random_generate_items():
     #This loops through all the items in the game and spawns them in random rooms
     for i in items:
         #A random number is generated in the range of the list, the room with this random number assigned to it is where the item is generated.
-        if i["name"]!="Knife" or i["name"]!="Fire extinguisher":
+        if items[i]["name"]!="Knife" or items[i]["name"]!="Fire extinguisher":
             item_location = randint(0, len(list_of_rooms) - 1)
 
             #Add the phone to the items in the room
@@ -247,19 +247,20 @@ def is_valid_exit(curr_room, chosen_exit):
     True
     """    
     goingrooms=[]
-    inrooms=[]
+    inrooms=str(curr_room["exits"][chosen_exit]+chosen_exit)
     for ex in curr_room["exits"]:
         goingrooms.append(str(curr_room["exits"][ex]+ex))
-        inrooms.append(str(curr_room["name"]+ex))
     if chosen_exit in curr_room["exits"]:
         for name in lockedRooms:
             if name in goingrooms:
-                if lockedRooms[name] in inrooms:
+                print(lockedRooms)
+                print(inrooms)
+                if inrooms in lockedRooms:
                     print("\nSorry this path is blocked")
                     return False
                 else:
                     return True
-            elif name in inrooms:
+            elif name==inrooms:
                 if lockedRooms[name] in goingrooms:
                     print("\nSorry this path is blocked")
                     return False
