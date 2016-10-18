@@ -26,15 +26,19 @@ item_knife = {
     """This knife is very sharp. It would be great to use on some succulent steak""",
     "weight":0.2
 }
-item_extinguisher={
-    "id": "extinguisher",
+item_pepperspray = {
 
-    "name": "Fire extinguisher",
+    "id": "pepperspray",
 
-    "description":
-    """This fire extinguisher looks like its working""",
+    "name": "Pepperspray",
+	
+	"description": 
+	"""The warning label reads, contact with eyes has a high potential of causing discomfort""",
+
     "weight":5
 }
+
+
 item_camera1={
     "id": "camera1",
 
@@ -69,8 +73,8 @@ items_list = {
 "phone": item_phone,
 "key": item_key,
 "knife": item_knife,
-"extinguisher": item_extinguisher,
 "camera1":item_camera1,
 "camera2":item_camera2,
-"tablet":item_tablet
+"tablet":item_tablet,
+"pepperSpray": item_pepperspray
 }

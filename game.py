@@ -12,7 +12,20 @@ import shutil
 import simpleaudio as sa
 from combat import *
 
-
+def use_spray(Player_current_room, Hannibal_current_room):
+    if Hannibal_current_room == Player_current_room:
+        spray_present = False
+        for x in Player["inventory"]:
+            if x == item_pepperspray:    
+                spray_present = True
+                break
+        if spray_present == True:
+            response = input("To repel inmate with pepper spray enter yes: ").lower()
+            if response == "yes":
+                Players["Hannibal the cannibal"]["current_room"] = cannibal_move()
+                print("Hannibal has ran, but he hasn't ran far!!")
+        if spray_present == False:
+            print("Game Over")
 
 def random_generate_items():
 
@@ -401,11 +414,10 @@ def prox_check(Player_current_room, Hannibal_current_room, screen_size):
         print("""Oh no, you see a humanoid shape covered in blood... something 
             tells you that it isn't his. It is getting closer and you suddenly 
             realise, it's Hannibal the Cannibal!!!""")
-        if "extinguisher" in Players["Doc"]["inventory"]:
-            print("You could push him away with the fire extinguisher")
-        else:
+        use_spray(Player_current_room, Hannibal_current_room)		
+        #else:
             #combat still to be finished and added
-            return
+        #    return
 
     
     if any(i in han_exit for i in doc_exit) == True: #checks to see if any items in Doc and Hannibal exit lists match
