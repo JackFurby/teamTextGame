@@ -405,6 +405,7 @@ def prox_check(Player_current_room, Hannibal_current_room, screen_size):
             print("You could push him away with the fire extinguisher")
         else:
             #combat still to be finished and added
+            return
 
     
     if any(i in han_exit for i in doc_exit) == True: #checks to see if any items in Doc and Hannibal exit lists match
@@ -438,7 +439,9 @@ def execute_take(item_id):
     for item in Players["Doc"]["current_room"]['items']:
         takeItem.append(item['id'])
     if item_id in takeItem:
+        #print(([d for d in (Players["Doc"]["current_room"]['items']) if d.get('id') == item_id]), "hello")
         Players["Doc"]["inventory"] = Players["Doc"]["inventory"] + ([d for d in (Players["Doc"]["current_room"]['items']) if d.get('id') == item_id])
+        #Players["Doc"]["invent_weight"] = Players["Doc"]["invent_weight"]
         #print(Players["Doc"]["current_room"]['items'])
         Players["Doc"]["current_room"]['items'] = [d for d in (Players["Doc"]["current_room"]['items']) if d.get('id') != item_id]
         #print(Players["Doc"]["current_room"]['items'])

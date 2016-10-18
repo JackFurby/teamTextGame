@@ -7,7 +7,8 @@ Player={
   "current_room":rooms["Office 1"],
   "inventory":[],
   "alive": True,
-  "escape": False
+  "escape": False,
+  "invent_weight":0
 }
 Cannibal={
   "name":"Hannibal the cannibal",
