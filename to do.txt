@@ -32,7 +32,9 @@ Things to do
 
 bugs to fix
 
-1. displaying room items
+1. all items in invent
+2. difficult to be in same room (hannibal moves before check)
+3. 
 
 still to do from last meeting
 
