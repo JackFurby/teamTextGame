@@ -32,7 +32,7 @@ Things to do
 
 bugs to fix
 
-1. difficult to be in same room (hannibal moves before check) 
+1. difficult to be in same room (hannibal moves before check) - added check after doc moves and hannibal moves, to extend once combat finnished
 
 still to do from last meeting
 
