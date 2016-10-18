@@ -326,7 +326,7 @@ def is_valid_exit(curr_room, chosen_exit,player):
         else:
             return False
 
-#This function needs no input and changes the Cannibal's position to a new random one
+#This function changes the Cannibal's position to a new random one
 def cannibal_move():
     """ The function moves Hannibal to a new room based on his available exits"""
     
