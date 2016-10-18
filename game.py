@@ -25,15 +25,13 @@ def random_generate_items():
             list_of_rooms.append(rooms[i])
 
     #This loops through all the items in the game and spawns them in random rooms
-    for i in items:
+    for i in items_list:
         #A random number is generated in the range of the list, the room with this random number assigned to it is where the item is generated.
-        if items[i]["name"]!="Knife" or items[i]["name"]!="Fire extinguisher":
+        if items_list[i]["name"]!="Knife":
             item_location = randint(0, len(list_of_rooms) - 1)
 
             #Add the phone to the items in the room
-            list_of_rooms[item_location]["items_hidden"].append(items[i])
-
-
+            list_of_rooms[item_location]["items_hidden"].append(items_list[i])
 
 def list_of_items(items):
     """This function takes a list of items (see items.py for the definition) and
@@ -53,10 +51,9 @@ def list_of_items(items):
 
     """
     itemList = []
-    for item_list in items:
+    for item_list in items_list:
         itemList.append(item_list['name'])
     return(', '.join(itemList))
-
 
 def print_room_items(room):
     """This function takes a room as an input and nicely displays a list of items
@@ -98,7 +95,6 @@ def print_inventory_items(items):
     """
     if items:
         print("You have " + list_of_items(items) + ".\n")
-
 
 def print_room(room):
     """This function takes a room as an input and nicely displays its name
@@ -154,37 +150,6 @@ def print_room(room):
     print()
     print_room_items(room)
 
-def exit_leads_to(exits, direction):
-    """This function takes a dictionary of exits and a direction (a particular
-    exit taken from this dictionary). It returns the name of the room into which
-    this exit leads. For example:
-
-    >>> exit_leads_to(rooms["Office 1"]["exits"], "east")
-    "Room 483"
-    >>> exit_leads_to(rooms["Reception"]["exits"], "south")
-    "Room 123"
-    >>> exit_leads_to(rooms["Emergency room"]["exits"], "south")
-    'Office 2'
-    """
-    return rooms[exits[direction]]["name"]
-
-
-def print_exit(direction, leads_to):
-    """This function prints a line of a menu of exits. It takes a direction (the
-    name of an exit) and the name of the room into which it leads (leads_to),
-    and should print a menu line in the following format:
-
-    GO <EXIT NAME UPPERCASE> to <where it leads>.
-
-    For example:
-    >>> print_exit("east", "Room 483")
-    GO EAST to Room 483.
-    >>> print_exit("north", "Room 234")
-    GO NORTH to Room 234.
-    """
-    print("GO " + direction.upper() + " to " + leads_to + ".")
-
-
 def print_menu(exits, room_items, inv_items):
     """This function displays the menu of available actions to the player. The
     argument exits is a dictionary of exits as exemplified in map.py. The
@@ -229,6 +194,34 @@ def print_menu(exits, room_items, inv_items):
         print("SEARCH ROOM to search room.")
     print("What do you want to do?")
 
+def exit_leads_to(exits, direction):
+    """This function takes a dictionary of exits and a direction (a particular
+    exit taken from this dictionary). It returns the name of the room into which
+    this exit leads. For example:
+
+    >>> exit_leads_to(rooms["Office 1"]["exits"], "east")
+    "Room 483"
+    >>> exit_leads_to(rooms["Reception"]["exits"], "south")
+    "Room 123"
+    >>> exit_leads_to(rooms["Emergency room"]["exits"], "south")
+    'Office 2'
+    """
+    return rooms[exits[direction]]["name"]
+
+def print_exit(direction, leads_to):
+    """This function prints a line of a menu of exits. It takes a direction (the
+    name of an exit) and the name of the room into which it leads (leads_to),
+    and should print a menu line in the following format:
+
+    GO <EXIT NAME UPPERCASE> to <where it leads>.
+
+    For example:
+    >>> print_exit("east", "Room 483")
+    GO EAST to Room 483.
+    >>> print_exit("north", "Room 234")
+    GO NORTH to Room 234.
+    """
+    print("GO " + direction.upper() + " to " + leads_to + ".")
 
 def is_valid_exit(curr_room, chosen_exit):
     """This function checks, given a dictionary "exits" and
@@ -289,6 +282,60 @@ def cannibal_move():
     if is_valid_exit(Players["Hannibal the cannibal"]["current_room"],x):
         Players["Hannibal the cannibal"]["current_room"]= move(Players["Hannibal the cannibal"]["current_room"]["exits"], x)
 
+def move(exits, direction):
+    """This function returns the room into which the player will move if, from a
+    dictionary "exits" of avaiable exits, they choose to move towards the exit
+    with the name given by "direction". For example:
+
+    >>> move(rooms["Office 2"]["exits"], "south") == rooms["Canteen"]
+    True
+    >>> move(rooms["Office 1"]["exits"], "east") == rooms["Room 483"]
+    True
+    >>> move(rooms["Reception"]["exits"], "west") == rooms["Room 123"]
+    False
+    """
+    
+    # Next room to go to
+    return rooms[exits[direction]]
+    
+def prox_check(Player_current_room, Hannibal_current_room, screen_size):
+    """This for loop checks if the cannibal is in a room near the player and alerts him"""    
+    
+    han_exit_dir = [] #list for Hannibal current_room exitis
+    han_exit = [] #list for Hannibal current_room exits names
+    doc_exit_dir = [] #list for Doc current_room exitis
+    doc_exit = [] #list for Doc current_room exits names
+    for k in Hannibal_current_room["exits"]:
+        han_exit_dir.append(k) #add a direction to list
+        #print(han_exit_dir)
+        for l in han_exit_dir:
+            han_exit.append(Hannibal_current_room["exits"][l]) #adds room name to list based on direction
+            han_exit = list(set(han_exit)) #remove duplicates in list
+            #print(han_exit, "han")
+
+    for k in Player_current_room["exits"]:
+        doc_exit_dir.append(k) #add a direction to list
+        #print(doc_exit_dir)
+        for l in doc_exit_dir:
+            doc_exit.append(Player_current_room["exits"][l]) #adds room name to list based on direction
+            doc_exit = list(set(doc_exit)) #remove duplicates in list
+            #print(doc_exit,"doc")
+    
+    
+    if Hannibal_current_room == Player_current_room: #if Doc and HAnnibal in same room return
+        return    
+    
+    if any(i in han_exit for i in doc_exit) == True: #checks to see if any items in Doc and Hannibal exit lists match
+        print("\n", "You hear faint footsteps".center(screen_size))
+        wave_obj = sa.WaveObject.from_wave_file('audio/footsteps.wav')
+        play_obj = wave_obj.play()
+    
+    elif Player_current_room["name"] in han_exit: #if rooms are next to each other print
+        print("\n", "!!!WARNING!!!".center(screen_size))
+        print("You hear someone breathing nearby...".center(screen_size))
+        wave_obj = sa.WaveObject.from_wave_file('audio/breathing.wav')
+        play_obj = wave_obj.play()
+
 def execute_go(direction):
     """This function, given the direction (e.g. "south") updates the current room
     to reflect the movement of the player if the direction is a valid exit
@@ -297,6 +344,7 @@ def execute_go(direction):
     """
     if is_valid_exit(Players["Doc"]["current_room"], direction):
         Players["Doc"]["current_room"] = move(Players["Doc"]["current_room"]["exits"], direction)
+
 def execute_take(item_id):
     """This function takes an item_id as an argument and moves this item from the
     list of items in the current room to the player's inventory. However, if
@@ -315,7 +363,6 @@ def execute_take(item_id):
         print(item_id + " added to your inventory.")
     else:
         print("You cannot take that.")
-
 
 def execute_drop(item_id):
     """This function takes an item_id as an argument and moves this item from the
@@ -413,7 +460,6 @@ def execute_command(command):
     else:
         print("This makes no sense.")
 
-
 def menu(exits, room_items, inv_items):
     """This function, given a dictionary of possible exits from a room, and a list
     of items found in the room and carried by the player, prints the menu of
@@ -433,61 +479,6 @@ def menu(exits, room_items, inv_items):
     normalised_user_input = normalise_input(user_input)
 
     return normalised_user_input
-
-
-def move(exits, direction):
-    """This function returns the room into which the player will move if, from a
-    dictionary "exits" of avaiable exits, they choose to move towards the exit
-    with the name given by "direction". For example:
-
-    >>> move(rooms["Office 2"]["exits"], "south") == rooms["Canteen"]
-    True
-    >>> move(rooms["Office 1"]["exits"], "east") == rooms["Room 483"]
-    True
-    >>> move(rooms["Reception"]["exits"], "west") == rooms["Room 123"]
-    False
-    """
-    
-    # Next room to go to
-    return rooms[exits[direction]]
-    
-def prox_check(Player_current_room, Hannibal_current_room, screen_size):
-    """This for loop checks if the cannibal is in a room near the player and alerts him"""    
-    
-    han_exit_dir = [] #list for Hannibal current_room exitis
-    han_exit = [] #list for Hannibal current_room exits names
-    doc_exit_dir = [] #list for Doc current_room exitis
-    doc_exit = [] #list for Doc current_room exits names
-    for k in Hannibal_current_room["exits"]:
-        han_exit_dir.append(k) #add a direction to list
-        #print(han_exit_dir)
-        for l in han_exit_dir:
-            han_exit.append(Hannibal_current_room["exits"][l]) #adds room name to list based on direction
-            han_exit = list(set(han_exit)) #remove duplicates in list
-            #print(han_exit, "han")
-
-    for k in Player_current_room["exits"]:
-        doc_exit_dir.append(k) #add a direction to list
-        #print(doc_exit_dir)
-        for l in doc_exit_dir:
-            doc_exit.append(Player_current_room["exits"][l]) #adds room name to list based on direction
-            doc_exit = list(set(doc_exit)) #remove duplicates in list
-            #print(doc_exit,"doc")
-    
-    
-    if Hannibal_current_room == Player_current_room: #if Doc and HAnnibal in same room return
-        return    
-    
-    if any(i in han_exit for i in doc_exit) == True: #checks to see if any items in Doc and Hannibal exit lists match
-        print("\n", "You hear faint footsteps".center(screen_size))
-        wave_obj = sa.WaveObject.from_wave_file('audio/footsteps.wav')
-        play_obj = wave_obj.play()
-    
-    elif Player_current_room["name"] in han_exit: #if rooms are next to each other print
-        print("\n", "!!!WARNING!!!".center(screen_size))
-        print("You hear someone breathing nearby...".center(screen_size))
-        wave_obj = sa.WaveObject.from_wave_file('audio/breathing.wav')
-        play_obj = wave_obj.play()
    
 # This is the entry point of our program
 def main():
