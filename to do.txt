@@ -1,6 +1,6 @@
 Things to do
 
-1. menu
+1. menu - done, may need updating once game done
   -play game
   -view leaderboard
   -instructions
@@ -32,7 +32,7 @@ Things to do
 
 bugs to fix
 
-1. unable to pick up knife
+1. displaying room items
 
 still to do from last meeting
 
