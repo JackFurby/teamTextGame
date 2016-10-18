@@ -28,7 +28,8 @@ room_Reception={
 	"name":"Reception",
 	"description":
     """The reception is more like an extension of the hall. There are two
-chairs behind the desk and files litter both the floor and workspace.""",
+chairs behind the desk and files litter both the floor and workspace.
+You would offer to help clean but there is no one around.""",
 	"items":[],
 	"items_hidden":[],
 	"searched":False,

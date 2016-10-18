@@ -60,13 +60,13 @@ def list_of_items(items):
     >>> list_of_items([])
     ''
 
-    >>> list_of_items([item_key, item_phone, item_Knife])
+    >>> list_of_items([item_key, item_phone, item_knife])
     'The key, Samsung Galaxy Note 7, Knife'
 
     """
     itemList = []
-    for item_list in items_list:
-        itemList.append(items_list[item_list]['name'])
+    for item_list in items:
+        itemList.append(item_list['name'])
     return(', '.join(itemList))
     
 
@@ -75,23 +75,7 @@ def print_room_items(room):
     found in this room (followed by a blank line). If there are no items in
     the room, nothing is printed. See map.py for the definition of a room, and
     items.py for the definition of an item. This function uses list_of_items()
-    to produce a comma-separated list of item names. For example:
-
-    >>> print_room_items(rooms["Reception"])
-    There is a pack of biscuits, a student handbook here.
-    <BLANKLINE>
-
-    >>> print_room_items(rooms["Office"])
-    There is a pen here.
-    <BLANKLINE>
-
-    >>> print_room_items(rooms["Admins"])
-
-    (no output)
-
-    Note: <BLANKLINE> here means that doctest should expect a blank line.
-
-    """
+    to produce a comma-separated list of item names."""
     if room['items'] == []:
         return None
     else:
@@ -103,9 +87,7 @@ def print_inventory_items(items):
     manner similar to print_room_items(). The only difference is in formatting:
     print "You have ..." instead of "There is ... here.". For example:
 
-    >>> print_inventory_items(inventory)
-    You have .
-    <BLANKLINE>
+    >>> print_inventory_items(Players["Doc"]["inventory"])
 
     """
     if items:
@@ -120,30 +102,20 @@ def print_room(room):
     in the room, the list of items is printed next followed by a blank line
     (use print_room_items() for this). For example:
 
-    >>> print_room(rooms["Office"])
+    >>> print_room(rooms["Room 666"])
     <BLANKLINE>
-    THE GENERAL OFFICE
+    ROOM 666
     <BLANKLINE>
-    You are standing next to the cashier's till at
-    30-36 Newport Road. The cashier looks at you with hope
-    in their eyes. If you go west you can return to the
-    Queen's Buildings.
-    <BLANKLINE>
-    There is a pen here.
+    add me
     <BLANKLINE>
 
     >>> print_room(rooms["Reception"])
     <BLANKLINE>
     RECEPTION
     <BLANKLINE>
-    You are in a maze of twisty little passages, all alike.
-    Next to you is the School of Computer Science and
-    Informatics reception. The receptionist, Matt Strangis,
-    seems to be playing an old school text-based adventure
-    game on his computer. There are corridors leading to the
-    south and east. The exit is to the west.
-    <BLANKLINE>
-    There is a pack of biscuits, a student handbook here.
+    The reception is more like an extension of the hall. There are two
+    chairs behind the desk and files litter both the floor and workspace.
+    You would offer to help clean but there is no one around.
     <BLANKLINE>
 
     >>> print_room(rooms["Office 1"])
@@ -151,7 +123,7 @@ def print_room(room):
     OFFICE 1
     <BLANKLINE>
     Your office is small with a chair by your desk and a bench against the wall.
-    There is a door to the east leading to Therapy.
+    There is a door to the east leading to Room 483.
     <BLANKLINE>
 
     Note: <BLANKLINE> here means that doctest should expect a blank line.
