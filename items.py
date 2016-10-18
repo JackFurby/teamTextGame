@@ -24,9 +24,9 @@ item_knife = {
     """This knife is very sharp. It would be great to use on some succulent steak"""
 }
 item_extinguisher={
-    "id": "extinguisher"
+    "id": "extinguisher",
 
-    "name": "Fire extinguisher"
+    "name": "Fire extinguisher",
 
     "description":
     """This fire extinguisher looks like its working"""
@@ -36,6 +36,6 @@ item_extinguisher={
 items = {
 "phone": item_phone,
 "key": item_key,
-"knife": item_knife
+"knife": item_knife,
 "extinguisher": item_extinguisher
 }
