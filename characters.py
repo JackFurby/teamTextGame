@@ -49,10 +49,10 @@ Patient_234={
   "alive": True
 }
 Patient_251={
-  "name":"Patient 251",
+  "name":"Sarah Connor",
   "current_room":rooms["Office 1"],
   "inventory":[],
-  "file":"",
+  "file":"Crazy woman that thinks robots are going to take over the world.",
   "alive": True
 }
 Patient_347={
