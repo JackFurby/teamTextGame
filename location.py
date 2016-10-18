@@ -39,7 +39,10 @@ You would offer to help clean but there is no one around.""",
 room_Therapy={
 	"name":"Therapy room",
 	"description":
-    """add me""",
+    """You force open the door which smashes against the wall, you are blinded by a beaming light shining directly in your face. 
+You see a large settee and an old oak desk in the centre of the room.
+The window flies open blowing paper from the desk all over the room.
+""",
 	"items":[],
 	"items_hidden":[],
 	"searched":False,
@@ -49,7 +52,10 @@ room_Therapy={
 room_Canteen={
 	"name":"Canteen",
 	"description":
-    """add me""",
+    """You open up two large doors to a massive room with a cluster of long tables,
+    after walking further into the pasty white room you realise this is the canteen.
+    Apart from a few crooked pictures on the walls the room is esentially bare,
+    you can see utensils on the surface of the table and a dinner tray covered in what looks like some sort of flesh""",
 	"items":[],
 	"items_hidden":[item_knife],
 	"searched":False,
@@ -59,7 +65,9 @@ room_Canteen={
 room_666={
 	"name":"Room 666",
 	"description":
-    """add me""",
+    """You open the cell door to a fairly small bare cell,
+ as you start to walk in you realise the walls are covered in blood, spelling out ‘I’m coming for you’, you see a body like shape in the bed.
+""",
 	"items":[],
 	"items_hidden":[],
 	"searched":False,
@@ -82,7 +90,10 @@ effect on the locked doors.""",
 room_Yard={
 	"name":"The yard",
 	"description":
-    """add me""",
+    """You charge through the doors and stumble into a large stone courtyard with a vine covered fountain in the middle, 
+ you look around and see nothing but a small gate blown open, 
+you hear the faint sounds of sirens in the distance.
+""",
 	"items":[],
 	"items_hidden":[],
 	"searched":False,
@@ -92,7 +103,9 @@ room_Yard={
 room_483={
 	"name":"Room 483",
 	"description":
-    """add me""",
+    """You open the door, you are greeted by a foul smell,
+ as you inspect the room you see a large bed in the middle of the room and a small bag in the corner covered with flies.
+""",
 	"items":[],
 	"items_hidden":[],
 	"searched":False,
@@ -102,7 +115,7 @@ room_483={
 room_645={
 	"name":"Room 645",
 	"description":
-    """add me""",
+    """You enter cell 645 and you see a small note hanging on the wall, apart from that the room is entirely bare.""",
 	"items":[],
 	"items_hidden":[],
 	"searched":False,
@@ -112,7 +125,9 @@ room_645={
 room_234={
 	"name":"Room 234",
 	"description":
-    """add me""",
+    """You see an open door after walking into the room it resembles cell 666, you see a double bed pushed tightly against the corner.
+ There appears to be some kind of liquid on the floor.
+""",
 	"items":[],
 	"items_hidden":[],
 	"searched":False,
@@ -122,7 +137,8 @@ room_234={
 room_123={
 	"name":"Room 123",
 	"description":
-    """add me""",
+    """The door is clean off its hinges, you slowly start to creep into the room and see a pile of doctors notes spread across the bed,
+    your file is on top and opened.""",
 	"items":[],
 	"items_hidden":[],
 	"searched":False,
@@ -132,7 +148,9 @@ room_123={
 room_251={
 	"name":"Room 251",
 	"description":
-    """add me""",
+    """The door is open but the lock appears to be intact.
+ As you walk in you see a small bed that has been pushed into the centre of the room and a small silver toilet is in the corner. 
+""",
 	"items":[],
 	"items_hidden":[],
 	"searched":False,
@@ -142,7 +160,7 @@ room_251={
 room_347={
 	"name":"Room 347",
 	"description":
-    """add me""",
+    """You enter cell 347 and see an inmate’s gown hung up on the wall covered in blood. There is a large bed in the centre of the room. """,
 	"items":[],
 	"items_hidden":[],
 	"searched":False,
@@ -152,7 +170,9 @@ room_347={
 room_696={
 	"name":"Room 696",
 	"description":
-    """add me""",
+    """You try to open the door but it appears to be stuck you smash into it and it falls onto the floor giving out a huge bang. 
+You get up and see a large metal sink in the corner of the room with a glowing red liquid flowing down onto the floor.
+""",
 	"items":[],
 	"items_hidden":[],
 	"searched":False,
