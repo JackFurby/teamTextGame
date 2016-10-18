@@ -10,6 +10,7 @@ from ending import *
 from gameparser import *
 import shutil
 import simpleaudio as sa
+from combat import *
 
 
 
@@ -397,7 +398,14 @@ def prox_check(Player_current_room, Hannibal_current_room, screen_size):
     
     
     if Hannibal_current_room == Player_current_room: #if Doc and HAnnibal in same room return
-        return    
+        print("""Oh no, you see a humanoid shape covered in blood... something 
+            tells you that it isn't his. It is getting closer and you suddenly 
+            realise, it's Hannibal the Cannibal!!!""")
+        if "extinguisher" in Players["Doc"]["inventory"]:
+            print("You could push him away with the fire extinguisher")
+        else:
+            #combat still to be finished and added
+
     
     if any(i in han_exit for i in doc_exit) == True: #checks to see if any items in Doc and Hannibal exit lists match
         print("\n", "You hear faint footsteps".center(screen_size))
