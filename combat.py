@@ -6,7 +6,7 @@ player_fighting = {
 	"health": 100,
 	"strength": 30,
 	"defence": 20,
-	"alive": True
+	"alive": Player["alive"]
 }
 
 #Create a dictionary with stats used for the cannibal in the fight
@@ -15,7 +15,7 @@ cannibal_fighting = {
 	"strength": 30,
 	"defence": 20,
 	"evolved": False,
-	"alive": True
+	"alive": Cannibal["alive"]
 }
 
 def player_attack():
