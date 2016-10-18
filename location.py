@@ -1,5 +1,4 @@
 from maps import *
-from items import *
 
 room_Office1={
 	"name":"Office 1",
@@ -50,7 +49,7 @@ room_Canteen={
 	"description":
     """add me""",
 	"items":[],
-	"items_hidden":[item_knife],
+	"items_hidden":["knife"],
 	"searched":False,
 	"exits":{"west":"Room 483","south":"Room 234","east":"Room 251","north":"Office 2"},
 	"map":[maps["Canteen map"],mapsON["Canteen map"]]
