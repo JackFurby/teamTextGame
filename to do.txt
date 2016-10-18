@@ -36,7 +36,7 @@ bugs to fix
 
 still to do from last meeting
 
-1. Switch in ER that unlocks 123-Reception and locks 251-347
+1. Switch in ER that unlocks 123-Reception and locks 251-347 DONE
 
 2. Key to reception randomised DONE
 
