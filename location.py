@@ -9,7 +9,7 @@ There is a door to the east leading to Room 483.""",
 	"items_hidden":[],
 	"searched":False,
 	"exits":{"east":"Room 483"},
-	"map":(maps["Office 1 map"])
+	"map":[maps["Office 1 map"],mapsON["Office 1 map"]]
 }
 room_Office2={
 	"name":"Office 2",
@@ -21,7 +21,7 @@ inspection it still works. Other than that the room is bare.""",
 	"items_hidden":[],
 	"searched":False,
 	"exits":{"north":"Emergency room","south":"Canteen","east":"The yard","west":"Therapy room"},
-	"map":(maps["Office 2 map"])	
+	"map":[maps["Office 2 map"],mapsON["Office 2 map"]]	
 }
 room_Reception={
 	"name":"Reception",
@@ -32,7 +32,7 @@ chairs behind the desk and files litter both the floor and workspace.""",
 	"items_hidden":[],
 	"searched":False,
 	"exits":{"south":"Room 123","west":"Emergency room"},
-	"map":(maps["Reception map"])
+	"map":[maps["Reception map"],mapsON["Reception map"]]
 }
 room_Therapy={
 	"name":"Therapy room",
@@ -42,7 +42,7 @@ room_Therapy={
 	"items_hidden":[],
 	"searched":False,
 	"exits":{"east":"Office 2","south":"Room 483"},
-	"map":(maps["Therapy room map"])
+	"map":[maps["Therapy room map"],mapsON["Therapy room map"]]
 }
 room_Canteen={
 	"name":"Canteen",
@@ -52,7 +52,7 @@ room_Canteen={
 	"items_hidden":["knife"],
 	"searched":False,
 	"exits":{"west":"Room 483","south":"Room 234","east":"Room 251","north":"Office 2"},
-	"map":(maps["Canteen map"])
+	"map":[maps["Canteen map"],mapsON["Canteen map"]]
 }
 room_666={
 	"name":"Room 666",
@@ -62,7 +62,7 @@ room_666={
 	"items_hidden":[],
 	"searched":False,
 	"exits":{"north":"Room 234","east":"Room 696"},
-	"map":(maps["Room 666 map"])
+	"map":[maps["Room 666 map"],mapsON["Room 666 map"]]
 }
 room_ER={
 	"name":"Emergency room",
@@ -74,7 +74,8 @@ effect on the locked doors.""",
 	"items_hidden":[],
 	"searched":False,
 	"exits":{"south":"Office 2"},
-	"map":(maps["Emergency room map"])
+	"map":[maps["Emergency room map"],mapsON["Emergency room map"]],
+	"switch":False
 }
 room_Yard={
 	"name":"The yard",
@@ -84,7 +85,7 @@ room_Yard={
 	"items_hidden":[],
 	"searched":False,
 	"exits":{"west":"Office 2","south":"Room 251"},
-	"map":(maps["The yard map"])
+	"map":[maps["The yard map"],mapsON["The yard map"]]
 }
 room_483={
 	"name":"Room 483",
@@ -94,7 +95,7 @@ room_483={
 	"items_hidden":[],
 	"searched":False,
 	"exits":{"north":"Therapy room","west":"Office 1","south":"Room 645","east":"Canteen"},
-	"map":(maps["Room 483 map"])	
+	"map":[maps["Room 483 map"],mapsON["Room 483 map"]]
 }
 room_645={
 	"name":"Room 645",
@@ -104,7 +105,7 @@ room_645={
 	"items_hidden":[],
 	"searched":False,
 	"exits":{"north":"Room 483","east":"Room 234"},
-	"map":(maps["Room 645 map"])	
+	"map":[maps["Room 645 map"],mapsON["Room 645 map"]]
 }
 room_234={
 	"name":"Room 234",
@@ -114,7 +115,7 @@ room_234={
 	"items_hidden":[],
 	"searched":False,
 	"exits":{"north":"Canteen","south":"Room 666","east":"Room 347","west":"Room 645"},
-	"map":(maps["Room 234 map"])	
+	"map":[maps["Room 234 map"],mapsON["Room 234 map"]]
 }
 room_123={
 	"name":"Room 123",
@@ -124,7 +125,7 @@ room_123={
 	"items_hidden":[],
 	"searched":False,
 	"exits":{"north":"Reception"},
-	"map":(maps["Room 123 map"])	
+	"map":[maps["Room 123 map"],mapsON["Room 123 map"]]
 }
 room_251={
 	"name":"Room 251",
@@ -134,7 +135,7 @@ room_251={
 	"items_hidden":[],
 	"searched":False,
 	"exits":{"north":"The yard","south":"Room 347","east":"Reception","west":"Canteen"},
-	"map":(maps["Room 251 map"])	
+	"map":[maps["Room 251 map"],mapsON["Room 251 map"]]
 }
 room_347={
 	"name":"Room 347",
@@ -144,7 +145,7 @@ room_347={
 	"items_hidden":[],
 	"searched":False,
 	"exits":{"north":"Room 251","east":"Room 123","west":"Room 234","south":"Room 696"},
-	"map":(maps["Room 347 map"])	
+	"map":[maps["Room 347 map"],mapsON["Room 347 map"]]
 }
 room_696={
 	"name":"Room 696",
@@ -154,7 +155,7 @@ room_696={
 	"items_hidden":[],
 	"searched":False,
 	"exits":{"north":"Room 347","west":"Room 666"},
-	"map":(maps["Room 696 map"])	
+	"map":[maps["Room 696 map"],mapsON["Room 696 map"]]	
 }
 rooms={
 	"Office 1":room_Office1,
@@ -177,6 +178,4 @@ lockedRooms={
 	"Canteeneast":"Room 483west",
 	"Canteensouth":"Room 234north",
 	"Canteenwest":"Room 251east",
-	"Receptioneast":"Room 251west",
-	"Receptionsouth":"Room 123north"
 }
