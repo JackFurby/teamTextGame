@@ -430,13 +430,22 @@ def execute_take(item_id):
     for item in Players["Doc"]["current_room"]['items']:
         takeItem.append(item['id'])
     if item_id in takeItem:
-        #print(([d for d in (Players["Doc"]["current_room"]['items']) if d.get('id') == item_id]), "hello")
         Players["Doc"]["inventory"] = Players["Doc"]["inventory"] + ([d for d in (Players["Doc"]["current_room"]['items']) if d.get('id') == item_id])
-        #Players["Doc"]["invent_weight"] = Players["Doc"]["invent_weight"]
-        #print(Players["Doc"]["current_room"]['items'])
-        Players["Doc"]["current_room"]['items'] = [d for d in (Players["Doc"]["current_room"]['items']) if d.get('id') != item_id]
-        #print(Players["Doc"]["current_room"]['items'])
-        print(item_id + " added to your inventory.")
+        
+        Players["Doc"]["invent_weight"] = 0
+        for i in Players["Doc"]["inventory"]:
+            Players["Doc"]["invent_weight"] = Players["Doc"]["invent_weight"] + i["weight"] # works out weight in Doc inventory
+            #print(i["weight"])
+        if Players["Doc"]["invent_weight"] > 2: #max weight Doc can carry
+            Players["Doc"]["inventory"] = [d for d in Players["Doc"]["inventory"] if d.get('id') != item_id] # if ivent_weight is to much
+            print("Your carrying to much weight. drop something first.")
+        else:
+            #print(Players["Doc"]["current_room"]['items'])
+            Players["Doc"]["current_room"]['items'] = [d for d in (Players["Doc"]["current_room"]['items']) if d.get('id') != item_id] #remove item picked up from room
+            #print(Players["Doc"]["current_room"]['items'])
+            print(item_id + " added to your inventory.")
+        #print(Players["Doc"]["invent_weight"])
+        #print(i["weight"]) 
     else:
         print("You cannot take that.")
 
@@ -457,6 +466,11 @@ def execute_drop(item_id):
         Players["Doc"]["inventory"] = [d for d in Players["Doc"]["inventory"] if d.get('id') != item_id]
         #print(inventory)
         print(item_id + " removed from your inventory.")
+        
+        Players["Doc"]["invent_weight"] = 0
+        for i in Players["Doc"]["inventory"]: # works out invent_weight for Doc
+            Players["Doc"]["invent_weight"] = Players["Doc"]["invent_weight"] + i["weight"]
+        
     else:
         print("You cannot drop that.")
 
@@ -520,18 +534,21 @@ def execute_command(command):
     elif command[0] == "take":
         if len(command) > 1:
             execute_take(command[1])
+            sa.stop_all()
         else:
             print("Take what?")
 
     elif command[0] == "drop":
         if len(command) > 1:
             execute_drop(command[1])
+            sa.stop_all()
         else:
             print("Drop what?")
 
     elif command[0] == "open":
         if len(command) > 1:
             execute_open(command[1])
+            sa.stop_all()
         else:
             print("Open what?")
             

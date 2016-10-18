@@ -35,7 +35,7 @@ item_pepperspray = {
 	"description": 
 	"""The warning label reads, contact with eyes has a high potential of causing discomfort""",
 
-    "weight":5
+    "weight":0.75
 }
 
 
@@ -65,7 +65,7 @@ item_tablet={
     "description": 
     """This tablet is connected to the cameras and can be used
     for surveillance""",
-    "weight":5
+    "weight":0.437
 }
 
 #Added items dictionary so we can access items without knowing their location
