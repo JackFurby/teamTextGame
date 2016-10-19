@@ -35,7 +35,8 @@ item_pepperspray = {
 	"description": 
 	"""The warning label reads, contact with eyes has a high potential of causing discomfort""",
 
-    "weight":0.75
+    "weight":0.75,
+    "use":0
 }
 
 

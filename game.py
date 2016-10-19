@@ -19,6 +19,9 @@ def use_spray(Player_current_room, Hannibal_current_room):
         if response == "yes":
             Players["Hannibal the cannibal"]["current_room"] = cannibal_move()
             print("Hannibal has ran, but he hasn't ran far!!")
+            items_list["pepperSpray"]["use"] = items_list["pepperSpray"]["use"] + 1
+            if items_list["pepperSpray"]["use"] == 3:
+                Players["Doc"]["inventory"].remove(item_pepperspray)
             return True
         else:
             return False
@@ -393,9 +396,8 @@ def prox_check(Player_current_room, Hannibal_current_room, screen_size):
             tells you that it isn't his. It is getting closer and you suddenly 
             realise, it's Hannibal the Cannibal!!!""")
         use_spray(Player_current_room, Hannibal_current_room)	
-        if use_spray == False:
-            print("good one")
-        	
+        if use_spray == True:
+            return
         #else:
             #combat still to be finished and added
         #    return
