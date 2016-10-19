@@ -25,9 +25,9 @@ def display_start_menu():
 		user_input = input("> ")
 
 		#Checks user input
-		if normalise_input(user_input) == ['play']:
+		if normalise_input(user_input) == ['1']:
 			break
-		elif normalise_input(user_input) == ['instructions']:
+		elif normalise_input(user_input) == ['2']:
 			display_instructions()
 		else:
 			print("\nPlease choose option 1, or 2\n")
