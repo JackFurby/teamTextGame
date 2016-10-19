@@ -65,10 +65,10 @@ def list_of_items(items):
     'The key, Samsung Galaxy Note 7, Knife'
 
     """
-    itemList = []
-    for item_list in items:
-        itemList.append(item_list['name'])
-    return(', '.join(itemList))
+    List = []
+    for items in items_list:
+        List.append(items)
+    return(', '.join(List))
     
 def print_room_items(room):
     """This function takes a room as an input and nicely displays a list of items
@@ -149,6 +149,8 @@ def print_menu(exits, room_items, inv_items):
     for items in inv_items:
         print("DROP", items['id'].upper(), "to drop your", items['id'] + ".")
     print("OPEN MAP to display map.")
+    if "tablet" in Players["Doc"]["inventory"]:
+        print("CHECK tablet")
     if "file" in Players["Doc"]["current_room"]:
         print("OPEN FILE to open file.")
     if Players["Doc"]["current_room"]["searched"] == False:
@@ -520,12 +522,15 @@ def execute_use(use_id):
     else:
         print("Use what?")   
 
-"""def execute_place(place_id):
-    if normalise_input(place_id) == "camera 1":
+def execute_place(place_id):
+    if normalise_input(place_id) == "camera1":
         if "camera1" in Players["Doc"]["inventory"]:
-        Players["Doc"]["current_room"]["items"].append("camera 1")
-        Players
-"""
+            execute_drop("camera1")
+    elif normalise_input(place_id) == "camera2":
+        if "camera2" in Players["Doc"]["inventory"]:
+            execute_drop("camera2")
+
+
 def execute_command(command):
     """This function takes a command (a list of words as returned by
     normalise_input) and, depending on the type of action (the first word of
@@ -580,7 +585,7 @@ def execute_command(command):
             print("Cannot search that")
     
     elif command[0] == "turn":
-        if len(command) > 1:
+        if len(command) > 1 and Players["Doc"]["current_room"]=="Emergency room":
             if execute_turn(command[1]):
                 cannibal_move()            
             sa.stop_all()
@@ -589,7 +594,7 @@ def execute_command(command):
             print("Turn what?")
     elif command[0] == "place":
         if len(command) > 2:
-            execute_turn(str(command[1]+" "+command[2]))
+            execute_turn(str(command[1]+command[2]))
         else:
             print("Place what?")
     #Way to exit the game without having to crash it
