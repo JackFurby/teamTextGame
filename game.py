@@ -179,9 +179,12 @@ def print_menu(exits, room_items, inv_items):
         print("DROP", items['id'].upper(), "to drop your", items['id'] + ".")
     print("OPEN MAP to display map.")
     if "file" in Players["Doc"]["current_room"]:
-        print("OPEN FILE to open file")
+        print("OPEN FILE to open file.")
     if Players["Doc"]["current_room"]["searched"] == False:
         print("SEARCH ROOM to search room.")
+    if Players["Doc"]["current_room"]["name"] == "Office 2":
+        if rooms["Office 2"]["phone"] == True:
+            print("USE PHONE to call for help.")
     print("What do you want to do?")
 
 def exit_leads_to(exits, direction):
@@ -532,7 +535,13 @@ def execute_turn(turn_id):
     else:
         print("Sorry you can't turn that")
         return False
-
+    
+def execute_use(use_id):
+    if use_id == "phone":
+        rooms["Office 2"]["phone"] = False
+        print("Help is on the way, hold tight until they arrive.")
+    else:
+        print("Use what?")   
 def execute_command(command):
     """This function takes a command (a list of words as returned by
     normalise_input) and, depending on the type of action (the first word of
@@ -573,6 +582,12 @@ def execute_command(command):
             execute_open(command[1])
         else:
             print("Open what?")
+            
+    elif command[0] == "use":
+        if len(command) > 1:
+            execute_use(command[1])
+        else:
+            print("use what?")
             
     elif command[0] == "search":
         if len(command) > 1:
@@ -629,7 +644,6 @@ def main():
     random_generate_items()
     # Main game loop
     while True:
-        
         if Players["Doc"]["escape"] == True:
             print(endings["escape"])
             break
@@ -642,7 +656,18 @@ def main():
             print(endings["live"])
             break
         
+        
+        
+        
+            
+        
         else:
+            if rooms["Office 2"]["phone"] == False:
+                global phone_used
+                phone_used = phone_used + 1
+                if phone_used > 2:
+                    Players["Doc"]["escape"] = True
+                
             # Display game status (room description, inventory etc.)
             print_room(Players["Doc"]["current_room"])
             print_inventory_items(Players["Doc"]["inventory"])
@@ -660,6 +685,8 @@ def main():
 
 # Works out size of terminal to be used with printing warnings
 screen_size = shutil.get_terminal_size().columns
+
+phone_used = 0 #how many goes have passed since phone used
 
 if __name__ == "__main__":
     main()
