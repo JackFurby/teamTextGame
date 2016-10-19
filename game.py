@@ -127,7 +127,6 @@ def print_room(room):
     There is a door to the east leading to Room 483.
     <BLANKLINE>
 
-    Note: <BLANKLINE> here means that doctest should expect a blank line.
     """
     # Display room name
     print()
@@ -139,35 +138,8 @@ def print_room(room):
     print_room_items(room)
 
 def print_menu(exits, room_items, inv_items):
-    """This function displays the menu of available actions to the player. The
-    argument exits is a dictionary of exits as exemplified in map.py. The
-    arguments room_items and inv_items are the items lying around in the room
-    and carried by the player respectively. The menu should, for each exit,
-    call the function print_exit() to print the information about each exit in
-    the appropriate format. The room into which an exit leads is obtained
-    using the function exit_leads_to(). Then, it should print a list of commands
-    related to items: for each item in the room print
-
-    "TAKE <ITEM ID> to take <item name>."
-
-    and for each item in the inventory print
-
-    "DROP <ITEM ID> to drop <item name>."
-
-    For example, the menu of actions available at the Reception may look like this:
-
-    You can:
-    GO EAST to your personal tutor's office.
-    GO WEST to the parking lot.
-    GO SOUTH to MJ and Simon's room.
-    TAKE BISCUITS to take a pack of biscuits.
-    TAKE HANDBOOK to take a student handbook.
-    DROP ID to drop your id card.
-    DROP LAPTOP to drop your laptop.
-    DROP MONEY to drop your money.
-    What do you want to do?
-
-    """
+    """This function displays the menu of available actions to the player."""
+    
     print("You can:")
     # Iterate over available exits
     for direction in exits:
@@ -550,8 +522,8 @@ def execute_use(use_id):
 def execute_command(command):
     """This function takes a command (a list of words as returned by
     normalise_input) and, depending on the type of action (the first word of
-    the command: "go", "take", or "drop"), executes either execute_go,
-    execute_take, execute_drop, or execute_open supplying the second word as the argument.
+    the command etc: "go", "take", or "drop" ), executes the corresponding function
+    supplying the second word as the argument.
 
     """
 
