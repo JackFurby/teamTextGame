@@ -49,23 +49,25 @@ History: Thinks he is a superhuman from the year 2267
 --------------------"""
 
 file_251 = """--------------------
-Name : 
+Name : Andross Guile 
 
-Patient number: 
+Patient number: 71
 
-Reason for imprisonment: 
+Reason for imprisonment: Arrested for treason
 
-History: 
+History: A megalomaniac who must be kept away from other prisoners to prevent rioting.
+The man was once a duke but wanted the throne for himself and lost the gamble.
 --------------------"""
 
 file_347 = """--------------------
-Name : 
+Name : Ronald Kray
 
-Patient number: 
+Patient number: 96
 
-Reason for imprisonment: 
+Reason for imprisonment: Arsen, bribary, thieving and murder.
 
-History: 
+History: One of two Kray twins who claimed to rule east London. Known to associate with the famous and 
+the infamous. 
 --------------------"""
 
 file_666 = """--------------------
