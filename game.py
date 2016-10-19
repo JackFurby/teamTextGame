@@ -506,14 +506,16 @@ def execute_search(search_id):
         return False
     
 def execute_turn(turn_id):
-    if turn_id == "switch":
-        rooms["Emergency room"]["switch"]=not rooms["Emergency room"]["switch"]
-        print("Something has changed in the map")
-        return True
+    if Players["Doc"]["current_room"]["name"]=="Emergency room":
+        if turn_id == "switch":
+            rooms["Emergency room"]["switch"]=not rooms["Emergency room"]["switch"]
+            print("Something has changed in the map")
+            return True
+        else:
+            print("Sorry you can't turn that")
+            return False
     else:
-        print("Sorry you can't turn that")
         return False
-    
 def execute_use(use_id):
     if use_id == "phone":
         rooms["Office 2"]["phone"] = False
@@ -523,10 +525,10 @@ def execute_use(use_id):
 
 def execute_place(place_id):
     if normalise_input(place_id) == "camera1":
-        if "camera1" in Players["Doc"]["inventory"]:
+        if item_camera1 in Players["Doc"]["inventory"]:
             execute_drop("camera1")
     elif normalise_input(place_id) == "camera2":
-        if "camera2" in Players["Doc"]["inventory"]:
+        if iteam_camera2 in Players["Doc"]["inventory"]:
             execute_drop("camera2")
 
 
@@ -584,7 +586,7 @@ def execute_command(command):
             print("Cannot search that")
     
     elif command[0] == "turn":
-        if len(command) > 1 and Players["Doc"]["current_room"]=="Emergency room":
+        if len(command) > 1:
             if execute_turn(command[1]):
                 cannibal_move()            
             sa.stop_all()
@@ -592,8 +594,8 @@ def execute_command(command):
         else:
             print("Turn what?")
     elif command[0] == "place":
-        if len(command) > 2:
-            execute_turn(str(command[1]+command[2]))
+        if len(command) > 1:
+            execute_place(str(command[1]))
         else:
             print("Place what?")
     #Way to exit the game without having to crash it
