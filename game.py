@@ -314,7 +314,9 @@ def is_valid_exit(curr_room, chosen_exit,player):
 #This function changes the Cannibal's position to a new random one
 def cannibal_move():
     """ The function moves Hannibal to a new room based on his available exits"""
-    print("cannibal move")
+    
+    print(random.choice(Players["Hannibal the cannibal"]["current_room"]["exits"]))
+    
     play_curr=Players["Doc"]["current_room"]
     exits=Players["Hannibal the cannibal"]["current_room"]["exits"]
     x=len(exits) - 1
@@ -536,15 +538,9 @@ def execute_command(command):
 
     if command[0] == "go":
         if len(command) > 1:
-            sa.stop_all()
-<<<<<<< HEAD
-            prox_check(Players["Doc"]["current_room"], Players["Hannibal the cannibal"]["current_room"], screen_size)
-            if execute_go ==True:
-                print("moving")
-=======
             if execute_go(command[1]):
->>>>>>> c4467e8bf8671ccb91aeff98f33db7c3d552d7db
                 cannibal_move()
+            sa.stop_all()
             prox_check(Players["Doc"]["current_room"], Players["Hannibal the cannibal"]["current_room"], screen_size)
         else:
             print("Go where?")
