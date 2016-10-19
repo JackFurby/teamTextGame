@@ -42,7 +42,7 @@ def random_generate_items():
     #This loops through all the items in the game and spawns them in random rooms
     for i in items_list:
         #A random number is generated in the range of the list, the room with this random number assigned to it is where the item is generated.
-        if items_list[i]["name"]!="Knife":
+        if items_list[i]["name"]!="Knife" or items_list[i]["name"]!="Camera 1" or items_list[i]["name"]!="Camera 2":
             item_location = randint(0, len(list_of_rooms) - 1)
 
             #Add the phone to the items in the room
