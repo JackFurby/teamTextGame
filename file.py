@@ -69,13 +69,16 @@ History:
 --------------------"""
 
 file_666 = """--------------------
-Name : 
+Name : Hannibal Lector
 
-Patient number: 
+Patient number: 666
+ 
+Reason for imprisonment: Mass murder and Consumption of another person(cannibalism).
 
-Reason for imprisonment: 
-
-History: 
+History: Dr. Hannibal Lector used his supreme intellect to his advantage to pick the perfect subjects
+for him to kill and consume. His name spread quickly through the media after he claimed the lives of
+28 people. The name ‘Hannibal the Cannibal’ still gives every person who reads stories of his dark
+terror; twisted nightmares.
 --------------------"""
 
 file_list = {

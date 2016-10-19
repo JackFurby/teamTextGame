@@ -43,19 +43,19 @@ item_pepperspray = {
 item_camera1={
     "id": "camera1",
 
-    "name": "Camera 1",
+    "name": "Camera",
 
     "description": 
-    """This camera can be placed in a room for surveillance""",
+    """This is a camera, perhaps you can take some pretty pictures with it""",
     "weight":1
 }
 item_camera2={
     "id": "camera2",
 
-    "name": "Camera 2",
+    "name": "Camera",
 
     "description": 
-    """This camera can be placed in a room for surveillance""",
+    """This camera seems to be broken.""",
     "weight":1
 }
 item_tablet={
@@ -64,8 +64,8 @@ item_tablet={
     "name": "Tablet",
 
     "description": 
-    """This tablet is connected to the cameras and can be used
-    for surveillance""",
+    """A nice shiny Ipad. You start playing flappy bird in hopes of beating the high score
+before realising the high score is over 9000.""",
     "weight":0.437
 }
 
