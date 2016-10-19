@@ -21,7 +21,7 @@ Things to do
 
 4. finish adding items
 
-5. damage and combat system
+5. damage and combat system - part, started and checks occur in prox_check
 
 6. AI
 
@@ -32,7 +32,7 @@ Things to do
 
 bugs to fix
 
-1. difficult to be in same room (hannibal moves before check) - added check after doc moves and hannibal moves, to extend once combat finnished
+
 
 still to do from last meeting
 
@@ -40,7 +40,7 @@ still to do from last meeting
 
 2. Key to reception randomised DONE
 
-3. Case file of each patient in their cells
+3. Case file of each patient in their cells - part, need to add files to file.py
 
 4. Fire extinguisher to push him away
 
