@@ -12,7 +12,7 @@ player_fighting = {
 #Create a dictionary with stats used for the cannibal in the fight
 cannibal_fighting = {
 	"health": 100,
-	"strength": 20,
+	"strength": 30,
 	"defence": 20,
 	"evolved": False,
 	"alive": Cannibal["alive"]
@@ -50,7 +50,7 @@ def player_attack():
 		elif type_of_attack == "2":
 
 			#The attack has a much lower maximum damage, calculate this value and take it away from the cannibals health
-			dmg_dealt = randint(0, player_fighting["strength"] - 15)
+			dmg_dealt = randint(5, player_fighting["strength"] - 15)
 			cannibal_fighting["health"] -= dmg_dealt
 
 			return "\nYou deal " + str(dmg_dealt) + " damage to " + Cannibal["name"] + "."
@@ -95,7 +95,7 @@ def cannibal_attack():
 
 		print("\n" + Cannibal["name"] + " uses scratch")
 
-		dmg_dealt = randint(0, cannibal_fighting["strength"] - 20)
+		dmg_dealt = randint(5, cannibal_fighting["strength"] - 10)
 		player_fighting["health"] -= dmg_dealt
 
 		return Cannibal["name"] + " deals " + str(dmg_dealt) + " damage to you."

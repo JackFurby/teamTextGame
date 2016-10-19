@@ -401,12 +401,16 @@ def prox_check(Player_current_room, Hannibal_current_room, screen_size):
         use_spray(Player_current_room, Hannibal_current_room)	
         if use_spray == True:
             return
+        if item_knife in Players["Doc"]["inventory"] :
+            if fight_main():
+                Players["Hannibal the cannibal"]["alive"] = False
+            else:
+                Players["Doc"]["alive"] = False
+            return
         else:
-            if item_knife in Player["inventory"] :
-                fight_main()
+            Players["Doc"]["alive"] = False
             return
 
-    
     if any(i in han_exit for i in doc_exit) == True: #checks to see if any items in Doc and Hannibal exit lists match
         print("\n", "You hear faint footsteps".center(screen_size))
         wave_obj = sa.WaveObject.from_wave_file('audio/footsteps.wav')
@@ -656,11 +660,6 @@ def main():
         elif Players["Hannibal the cannibal"]["alive"] == False:
             print(endings["live"])
             break
-        
-        
-        
-        
-            
         
         else:
             if rooms["Office 2"]["phone"] == False:
