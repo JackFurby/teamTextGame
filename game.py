@@ -309,7 +309,6 @@ def is_valid_exit(curr_room, chosen_exit,player):
 def cannibal_move():
     """ The function moves Hannibal to a new room based on his available exits"""
     
-    #print(randrange(0,len(Players["Hannibal the cannibal"]["current_room"]["exits"])))
     
     play_curr=Players["Doc"]["current_room"]
     exits=Players["Hannibal the cannibal"]["current_room"]["exits"]
