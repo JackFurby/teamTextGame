@@ -50,7 +50,7 @@ def player_attack():
 		elif type_of_attack == "2":
 
 			#The attack has a much lower maximum damage, calculate this value and take it away from the cannibals health
-			dmg_dealt = randint(0, player_fighting["strength"] - 15)
+			dmg_dealt = randint(5, player_fighting["strength"] - 15)
 			cannibal_fighting["health"] -= dmg_dealt
 
 			return "\nYou deal " + str(dmg_dealt) + " damage to " + Cannibal["name"] + "."
@@ -95,7 +95,7 @@ def cannibal_attack():
 
 		print("\n" + Cannibal["name"] + " uses scratch")
 
-		dmg_dealt = randint(0, cannibal_fighting["strength"] - 20)
+		dmg_dealt = randint(5, cannibal_fighting["strength"] - 10)
 		player_fighting["health"] -= dmg_dealt
 
 		return Cannibal["name"] + " deals " + str(dmg_dealt) + " damage to you."
@@ -140,6 +140,8 @@ def fight_main():
 
 	if player_fighting["alive"] == True:
 		print("\nCongratulations you survived with " + str(player_fighting["health"]) + " HP.\n")
+		return True
 
 	else:
 		print("\nHAHAHA " + Cannibal["name"] + " killed you and now he's going to eat you.\nHe survived with " + str(cannibal_fighting["health"]) + " HP if you were wondering.\n")
+		return False

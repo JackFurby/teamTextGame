@@ -5,51 +5,17 @@ Things to do
   -view leaderboard
   -instructions
   -settings
- 
-  -use of graphics (image to ascii)?
 
-2. end game - added checks to see if game is over, need to add cases where the values being checked will change
-  -Die
-  -live
-  -other?
+2. finish adding items
 
-  -display message once once end game reached
-
-3. read command
-  -ability to look at differnt objects and rooms
-  -used to read files on inmates
-
-4. finish adding items
-
-5. damage and combat system - part, started and checks occur in prox_check
-
-6. AI
-
-7. search command - added 
-  -possibly used to display items in a room
-  -if used hannibal moves
-  -perhaps multiple searches of a room nessery to show everything (random selection of what is found)?
+3. AI
 
 bugs to fix
 
-
+1. hannibal not moving
 
 still to do from last meeting
 
-1. Switch in ER that unlocks 123-Reception and locks 251-347 DONE
+1. Case file of each patient in their cells - part, need to add files to file.py
 
-2. Key to reception randomised DONE
-
-3. Case file of each patient in their cells - part, need to add files to file.py
-
-4. Fire extinguisher to push him away
-
-5. Yard locks when someone walks in
-
-6. 2 cameras in the ER that you can place around
-
-7. Weapon at Reception
-
-8. Knife fight, turns until one dies, damage between 20-25, you can block making the damage 5-10
-
-9. Endings: find key, have phone, lock in the yard, kill with knife but be hurt
+2. Yard locks when someone walks in

@@ -23,7 +23,8 @@ inspection it still works. Other than that the room is bare.""",
 	"items_hidden":[],
 	"searched":False,
 	"exits":{"north":"Emergency room","south":"Canteen","east":"The yard","west":"Therapy room"},
-	"map":[maps["Office 2 map"],mapsON["Office 2 map"]]	
+	"map":[maps["Office 2 map"],mapsON["Office 2 map"]],	
+	"phone": True
 }
 room_Reception={
 	"name":"Reception",

@@ -19,6 +19,9 @@ def use_spray(Player_current_room, Hannibal_current_room):
         if response == "yes":
             Players["Hannibal the cannibal"]["current_room"] = cannibal_move()
             print("Hannibal has ran, but he hasn't ran far!!")
+            items_list["pepperSpray"]["use"] = items_list["pepperSpray"]["use"] + 1
+            if items_list["pepperSpray"]["use"] == 3:
+                Players["Doc"]["inventory"].remove(item_pepperspray)
             return True
         else:
             return False
@@ -124,7 +127,6 @@ def print_room(room):
     There is a door to the east leading to Room 483.
     <BLANKLINE>
 
-    Note: <BLANKLINE> here means that doctest should expect a blank line.
     """
     # Display room name
     print()
@@ -136,35 +138,8 @@ def print_room(room):
     print_room_items(room)
 
 def print_menu(exits, room_items, inv_items):
-    """This function displays the menu of available actions to the player. The
-    argument exits is a dictionary of exits as exemplified in map.py. The
-    arguments room_items and inv_items are the items lying around in the room
-    and carried by the player respectively. The menu should, for each exit,
-    call the function print_exit() to print the information about each exit in
-    the appropriate format. The room into which an exit leads is obtained
-    using the function exit_leads_to(). Then, it should print a list of commands
-    related to items: for each item in the room print
-
-    "TAKE <ITEM ID> to take <item name>."
-
-    and for each item in the inventory print
-
-    "DROP <ITEM ID> to drop <item name>."
-
-    For example, the menu of actions available at the Reception may look like this:
-
-    You can:
-    GO EAST to your personal tutor's office.
-    GO WEST to the parking lot.
-    GO SOUTH to MJ and Simon's room.
-    TAKE BISCUITS to take a pack of biscuits.
-    TAKE HANDBOOK to take a student handbook.
-    DROP ID to drop your id card.
-    DROP LAPTOP to drop your laptop.
-    DROP MONEY to drop your money.
-    What do you want to do?
-
-    """
+    """This function displays the menu of available actions to the player."""
+    
     print("You can:")
     # Iterate over available exits
     for direction in exits:
@@ -176,9 +151,12 @@ def print_menu(exits, room_items, inv_items):
         print("DROP", items['id'].upper(), "to drop your", items['id'] + ".")
     print("OPEN MAP to display map.")
     if "file" in Players["Doc"]["current_room"]:
-        print("OPEN FILE to open file")
+        print("OPEN FILE to open file.")
     if Players["Doc"]["current_room"]["searched"] == False:
         print("SEARCH ROOM to search room.")
+    if Players["Doc"]["current_room"]["name"] == "Office 2":
+        if rooms["Office 2"]["phone"] == True:
+            print("USE PHONE to call for help.")
     print("What do you want to do?")
 
 def exit_leads_to(exits, direction):
@@ -240,28 +218,28 @@ def is_valid_exit(curr_room, chosen_exit,player):
             #Check if the player has the key
             if "key" in Players["Doc"]["inventory"]:
                 print("The door between Reception and Room 123 is locked")
-                lockedRooms.pop("Receptionsouth",None)
+                lockedRooms.pop("Receptionsouth", None)
                 print("The door between Reception and Room 251 is locked")
-                lockedRooms.pop("Receptioneast",None)
+                lockedRooms.pop("Receptioneast", None)
                 #Check if the switch is on or off
                 if rooms["Emergency room"]["switch"]:
                     print("The door between Room 251 and Room 347 is locked")
                     lockedRooms["Room 251south"]="Room 347north"
                 else:
                     print("The door between Room 251 and Room 347 is unlocked")
-                    lockedRooms.pop("Room 251south",None)
+                    lockedRooms.pop("Room 251south", None)
             #Check if the switch is on or off
             elif rooms["Emergency room"]["switch"]:
                 print("The door between Room 251 and Room 347 is locked")
                 lockedRooms["Room 251south"]="Room 347north"
                 print("The door between Reception and Room 123 is unlocked")
-                lockedRooms.pop("Receptionsouth",None)
+                lockedRooms.pop("Receptionsouth", None)
                 print("The door between Reception and Room 251 is locked")
                 lockedRooms["Receptioneast"]="Room 251west"
             #If the player has no key and the switch is of:
             else:
                 print("The door between Room 251 and Room 347 is unlocked")
-                lockedRooms.pop("Room 251south",None)
+                lockedRooms.pop("Room 251south", None)
                 print("The door between Reception and Room 123 is locked")
                 lockedRooms["Receptionsouth"]="Room 123north"
                 print("The door between Reception and Room 251 is locked")
@@ -278,7 +256,7 @@ def is_valid_exit(curr_room, chosen_exit,player):
                         else:
                             return True
                     #Check if the room the user is in is locked
-                    elif name==inrooms:
+                    elif name == inrooms:
                         #Check if the door joining both rooms is locked
                         if lockedRooms[name] in goingrooms:
                             print("\nSorry this path is blocked")
@@ -296,14 +274,14 @@ def is_valid_exit(curr_room, chosen_exit,player):
         else:
             #If switch is on:
             if rooms["Emergency room"]["switch"]:
-                lockedRooms["Room 251south"]="Room 347north"
-                lockedRooms.pop("Receptionsouth",None)
-                lockedRooms["Receptioneast"]="Room 251west"
+                lockedRooms["Room 251south"] = "Room 347north"
+                lockedRooms.pop("Receptionsouth", None)
+                lockedRooms["Receptioneast"] = "Room 251west"
             #If switch is off
             else:
-                lockedRooms.pop("Room 251south",None)
-                lockedRooms["Receptionsouth"]="Room 123north"
-                lockedRooms["Receptioneast"]="Room 251west"
+                lockedRooms.pop("Room 251south", None)
+                lockedRooms["Receptionsouth"] = "Room 123north"
+                lockedRooms["Receptioneast"] = "Room 251west"
             #If the exit is a valid exit:
             print(chosen_exit)
             print(curr_room["exits"])
@@ -318,7 +296,7 @@ def is_valid_exit(curr_room, chosen_exit,player):
                         else:
                             return True
                     #If the room the character is in is locked:
-                    elif name==inrooms:
+                    elif name == inrooms:
                         #If the door between the room he is in and 
                             #where he is going to is locked:
                         if lockedRooms[name] in goingrooms:
@@ -339,15 +317,15 @@ def cannibal_move():
     print("cannibal move")
     play_curr=Players["Doc"]["current_room"]
     exits=Players["Hannibal the cannibal"]["current_room"]["exits"]
-    x=len(exits)-1
-    r=randint(0,x)
+    x=len(exits) - 1
+    r=randint(0, x)
     k=""
     for k in exits:
-        if r==0:
+        if r == 0:
             break
         r=r-1
-    x=k
-    if is_valid_exit(Players["Hannibal the cannibal"]["current_room"],x,"Hannibal"):
+    x = k
+    if is_valid_exit(Players["Hannibal the cannibal"]["current_room"], x, "Hannibal"):
         Players["Hannibal the cannibal"]["current_room"]= move(Players["Hannibal the cannibal"]["current_room"]["exits"], x)
 
 def move(exits, direction):
@@ -395,14 +373,18 @@ def prox_check(Player_current_room, Hannibal_current_room, screen_size):
             tells you that it isn't his. It is getting closer and you suddenly 
             realise, it's Hannibal the Cannibal!!!""")
         use_spray(Player_current_room, Hannibal_current_room)	
-        if use_spray == False:
-            print("good one")
-        	
-        #else:
-            #combat still to be finished and added
-        #    return
+        if use_spray == True:
+            return
+        if item_knife in Players["Doc"]["inventory"] :
+            if fight_main():
+                Players["Hannibal the cannibal"]["alive"] = False
+            else:
+                Players["Doc"]["alive"] = False
+            return
+        else:
+            Players["Doc"]["alive"] = False
+            return
 
-    
     if any(i in han_exit for i in doc_exit) == True: #checks to see if any items in Doc and Hannibal exit lists match
         print("\n", "You hear faint footsteps".center(screen_size))
         wave_obj = sa.WaveObject.from_wave_file('audio/footsteps.wav')
@@ -423,6 +405,7 @@ def execute_go(direction):
     if is_valid_exit(Players["Doc"]["current_room"], direction,"Doc") == True:
         Players["Doc"]["current_room"] = move(Players["Doc"]["current_room"]["exits"], direction)
         print("\nYou are now in", Players["Doc"]["current_room"]["name"] + ".")
+        prox_check(Players["Doc"]["current_room"], Players["Hannibal the cannibal"]["current_room"], screen_size)
         return True
     else:
         print("You cannot go there.")
@@ -522,6 +505,7 @@ def execute_search(search_id):
         Players["Doc"]["current_room"]["searched"] = True
         return True
     else:
+        print("\nYou can't search that.")
         return False
     
 def execute_turn(turn_id):
@@ -532,12 +516,18 @@ def execute_turn(turn_id):
     else:
         print("Sorry you can't turn that")
         return False
-
+    
+def execute_use(use_id):
+    if use_id == "phone":
+        rooms["Office 2"]["phone"] = False
+        print("Help is on the way, hold tight until they arrive.")
+    else:
+        print("Use what?")   
 def execute_command(command):
     """This function takes a command (a list of words as returned by
     normalise_input) and, depending on the type of action (the first word of
-    the command: "go", "take", or "drop"), executes either execute_go,
-    execute_take, execute_drop, or execute_open supplying the second word as the argument.
+    the command etc: "go", "take", or "drop" ), executes the corresponding function
+    supplying the second word as the argument.
 
     """
 
@@ -546,14 +536,16 @@ def execute_command(command):
 
     if command[0] == "go":
         if len(command) > 1:
-            execute_go(command[1])
             sa.stop_all()
+<<<<<<< HEAD
             prox_check(Players["Doc"]["current_room"], Players["Hannibal the cannibal"]["current_room"], screen_size)
             if execute_go ==True:
                 print("moving")
+=======
+            if execute_go(command[1]):
+>>>>>>> c4467e8bf8671ccb91aeff98f33db7c3d552d7db
                 cannibal_move()
-                sa.stop_all()
-                prox_check(Players["Doc"]["current_room"], Players["Hannibal the cannibal"]["current_room"], screen_size)
+            prox_check(Players["Doc"]["current_room"], Players["Hannibal the cannibal"]["current_room"], screen_size)
         else:
             print("Go where?")
 
@@ -575,10 +567,15 @@ def execute_command(command):
         else:
             print("Open what?")
             
+    elif command[0] == "use":
+        if len(command) > 1:
+            execute_use(command[1])
+        else:
+            print("use what?")
+            
     elif command[0] == "search":
         if len(command) > 1:
-            execute_search(command[1])
-            if execute_search == True:
+            if execute_search(command[1]):
                 cannibal_move()
             sa.stop_all()
             prox_check(Players["Doc"]["current_room"], Players["Hannibal the cannibal"]["current_room"], screen_size)
@@ -587,8 +584,7 @@ def execute_command(command):
     
     elif command[0] == "turn":
         if len(command) > 1:
-            execute_turn(command[1])
-            if execute_turn == True:
+            if execute_turn(command[1]):
                 cannibal_move()            
             sa.stop_all()
             prox_check(Players["Doc"]["current_room"], Players["Hannibal the cannibal"]["current_room"], screen_size)
@@ -630,7 +626,6 @@ def main():
     random_generate_items()
     # Main game loop
     while True:
-        
         if Players["Doc"]["escape"] == True:
             print(endings["escape"])
             break
@@ -644,6 +639,12 @@ def main():
             break
         
         else:
+            if rooms["Office 2"]["phone"] == False:
+                global phone_used
+                phone_used = phone_used + 1
+                if phone_used > 2:
+                    Players["Doc"]["escape"] = True
+                
             # Display game status (room description, inventory etc.)
             print_room(Players["Doc"]["current_room"])
             print_inventory_items(Players["Doc"]["inventory"])
@@ -661,6 +662,8 @@ def main():
 
 # Works out size of terminal to be used with printing warnings
 screen_size = shutil.get_terminal_size().columns
+
+phone_used = 0 #how many goes have passed since phone used
 
 if __name__ == "__main__":
     main()
