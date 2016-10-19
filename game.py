@@ -344,9 +344,6 @@ def cannibal_move():
     x=k
     if is_valid_exit(Players["Hannibal the cannibal"]["current_room"],x,"Hannibal"):
         Players["Hannibal the cannibal"]["current_room"]= move(Players["Hannibal the cannibal"]["current_room"]["exits"], x)
-        
-    if Players["Hannibal the cannibal"]["current_room"]["name"] == Players["Doc"]["current_room"]["name"]:
-        print("Hannibal and Doc in same room (Hannibal move)")
 
 def move(exits, direction):
     """This function returns the room into which the player will move if, from a
@@ -388,7 +385,7 @@ def prox_check(Player_current_room, Hannibal_current_room, screen_size):
             #print(doc_exit,"doc")
     
     
-    if Hannibal_current_room == Player_current_room: #if Doc and HAnnibal in same room return
+    if Hannibal_current_room == Player_current_room: #if Doc and Hannibal in same room return
         print("""Oh no, you see a humanoid shape covered in blood... something 
             tells you that it isn't his. It is getting closer and you suddenly 
             realise, it's Hannibal the Cannibal!!!""")
@@ -417,9 +414,6 @@ def execute_go(direction):
     """
     if is_valid_exit(Players["Doc"]["current_room"], direction,"Doc"):
         Players["Doc"]["current_room"] = move(Players["Doc"]["current_room"]["exits"], direction)
-    
-    if Players["Doc"]["current_room"]["name"] == Players["Hannibal the cannibal"]["current_room"]["name"]:
-        print("Hannibal and Doc in same room (Doc move)")
 
 def execute_take(item_id):
     """This function takes an item_id as an argument and moves this item from the
@@ -535,6 +529,7 @@ def execute_command(command):
     if command[0] == "go":
         if len(command) > 1:
             execute_go(command[1])
+            prox_check(Players["Doc"]["current_room"], Players["Hannibal the cannibal"]["current_room"], screen_size)
             cannibal_move()
             sa.stop_all()
         else:
@@ -566,6 +561,7 @@ def execute_command(command):
             execute_search(command[1])
             cannibal_move()
             sa.stop_all()
+            prox_check(Players["Doc"]["current_room"], Players["Hannibal the cannibal"]["current_room"], screen_size)
         else:
             print("Cannot search that")
     
@@ -574,6 +570,7 @@ def execute_command(command):
             execute_turn(command[1])
             cannibal_move()
             sa.stop_all()
+            prox_check(Players["Doc"]["current_room"], Players["Hannibal the cannibal"]["current_room"], screen_size)
         else:
             print("Turn what?")
     #Way to exit the game without having to crash it
@@ -610,8 +607,6 @@ def main():
     display_start_menu()
     # Add each item to a random room
     random_generate_items()
-    # Works out size of terminal to be used with printing warnings
-    screen_size = shutil.get_terminal_size().columns
     # Main game loop
     while True:
         
@@ -637,11 +632,14 @@ def main():
             # Execute the player's command
             if execute_command(command)==False:
                 break
-            prox_check(Players["Doc"]["current_room"], Players["Hannibal the cannibal"]["current_room"], screen_size)
+            
                 
 # Are we being run as a script? If so, run main().
 # '__main__' is the name of the scope in which top-level code executes.
 # See https://docs.python.org/3.4/library/__main__.html for explanation
+
+# Works out size of terminal to be used with printing warnings
+screen_size = shutil.get_terminal_size().columns
 
 if __name__ == "__main__":
     main()

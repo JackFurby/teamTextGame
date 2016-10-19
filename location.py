@@ -67,8 +67,8 @@ room_666={
 	"name":"Room 666",
 	"description":
     """You open the cell door to a fairly small bare cell,
- as you start to walk in you realise the walls are covered in blood, spelling out ‘I’m coming for you’, you see a body like shape in the bed.
-""",
+as you start to walk in you realise the walls are covered in blood, spelling out ‘I’m
+coming for you’, you see a body like shape in the bed.""",
 	"items":[],
 	"items_hidden":[],
 	"searched":False,
@@ -92,10 +92,9 @@ effect on the locked doors.""",
 room_Yard={
 	"name":"The yard",
 	"description":
-    """You charge through the doors and stumble into a large stone courtyard with a vine covered fountain in the middle, 
- you look around and see nothing but a small gate blown open, 
-you hear the faint sounds of sirens in the distance.
-""",
+    """You charge through the doors and stumble into a large stone courtyard with a vine covered
+fountain in the middle, you look around and see nothing but a small gate blown open, 
+you hear the faint sounds of sirens in the distance.""",
 	"items":[],
 	"items_hidden":[],
 	"searched":False,
@@ -106,7 +105,7 @@ room_483={
 	"name":"Room 483",
 	"description":
     """You open the door, you are greeted by a foul smell,
- as you inspect the room you see a large bed in the middle of the room and a small bag in the corner covered with flies.
+as you inspect the room you see a large bed in the middle of the room and a small bag in the corner covered with flies.
 """,
 	"items":[],
 	"items_hidden":[],
@@ -129,9 +128,8 @@ room_645={
 room_234={
 	"name":"Room 234",
 	"description":
-    """You see an open door after walking into the room it resembles cell 666, you see a double bed pushed tightly against the corner.
- There appears to be some kind of liquid on the floor.
-""",
+    """You see an open door after walking into the room it resembles cell 666, you see a double
+bed pushed tightly against the corner. There appears to be some kind of liquid on the floor.""",
 	"items":[],
 	"items_hidden":[],
 	"searched":False,
@@ -142,8 +140,8 @@ room_234={
 room_123={
 	"name":"Room 123",
 	"description":
-    """The door is clean off its hinges, you slowly start to creep into the room and see a pile of doctors notes spread across the bed,
-    your file is on top and opened.""",
+    """The door is clean off its hinges, you slowly start to creep into the room and see a pile
+of doctors notes spread across the bed, your file is on top and opened.""",
 	"items":[],
 	"items_hidden":[],
 	"searched":False,
@@ -155,8 +153,7 @@ room_251={
 	"name":"Room 251",
 	"description":
     """The door is open but the lock appears to be intact.
- As you walk in you see a small bed that has been pushed into the centre of the room and a small silver toilet is in the corner. 
-""",
+As you walk in you see a small bed that has been pushed into the centre of the room and a small silver toilet is in the corner.""",
 	"items":[],
 	"items_hidden":[],
 	"searched":False,
@@ -167,7 +164,8 @@ room_251={
 room_347={
 	"name":"Room 347",
 	"description":
-    """You enter cell 347 and see an inmate’s gown hung up on the wall covered in blood. There is a large bed in the centre of the room. """,
+    """You enter cell 347 and see an inmate’s gown hung up on the wall covered in blood.
+There is a large bed in the centre of the room. """,
 	"items":[],
 	"items_hidden":[],
 	"searched":False,
