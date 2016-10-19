@@ -42,7 +42,7 @@ def random_generate_items():
     #This loops through all the items in the game and spawns them in random rooms
     for i in items_list:
         #A random number is generated in the range of the list, the room with this random number assigned to it is where the item is generated.
-        if items_list[i]["name"]!="Knife" or items_list[i]["name"]!="Camera 1" or items_list[i]["name"]!="Camera 2":
+        if items_list[i]["name"]!="Knife" or items_list[i]["name"]!="Camera 1" or items_list[i]["name"]!="Camera 2" or items_list[i]["name"]!="Tablet":
             item_location = randint(0, len(list_of_rooms) - 1)
 
             #Add the phone to the items in the room
@@ -287,10 +287,10 @@ def is_valid_exit(curr_room, chosen_exit,player):
             if chosen_exit in curr_room["exits"]:
                 for name in lockedRooms:
                     #If the room the character is going to is locked:
-                    if name in goingrooms[name]:
+                    if name in goingrooms:
                         #If the door between the room he is in and 
                             #where he is going to is locked:
-                        if inrooms in lockedRooms:
+                        if inrooms in lockedRooms[name]:
                             return False
                         else:
                             return True
