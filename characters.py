@@ -4,7 +4,7 @@ from location import rooms
 Player={
   "name":"Doc",
   "current_room":rooms["Office 1"],
-  "inventory":[],
+  "inventory":[item_knife],
   "alive": True,
   "escape": False,
   "invent_weight":0
