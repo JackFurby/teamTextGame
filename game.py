@@ -527,7 +527,7 @@ def execute_turn(turn_id):
 def execute_use(use_id):
     if use_id == "phone":
         rooms["Office 2"]["phone"] = False
-        print("Help is on the way, hold tight until they arrive.")
+        print("\nHelp is on the way, hold tight until they arrive.")
         rooms["Office 2"]["phone_call"]=True
     else:
         print("Use what?")   
