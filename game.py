@@ -403,6 +403,7 @@ def execute_go(direction):
     if is_valid_exit(Players["Doc"]["current_room"], direction,"Doc") == True:
         Players["Doc"]["current_room"] = move(Players["Doc"]["current_room"]["exits"], direction)
         print("\nYou are now in", Players["Doc"]["current_room"]["name"] + ".")
+        prox_check(Players["Doc"]["current_room"], Players["Hannibal the cannibal"]["current_room"], screen_size)
         return True
     else:
         print("You cannot go there.")
@@ -502,6 +503,7 @@ def execute_search(search_id):
         Players["Doc"]["current_room"]["searched"] = True
         return True
     else:
+        print("\nYou can't search that.")
         return False
     
 def execute_turn(turn_id):
@@ -532,13 +534,10 @@ def execute_command(command):
 
     if command[0] == "go":
         if len(command) > 1:
-            execute_go(command[1])
             sa.stop_all()
-            prox_check(Players["Doc"]["current_room"], Players["Hannibal the cannibal"]["current_room"], screen_size)
-            if execute_go == True:
+            if execute_go(command[1]):
                 cannibal_move()
-                sa.stop_all()
-                prox_check(Players["Doc"]["current_room"], Players["Hannibal the cannibal"]["current_room"], screen_size)
+            prox_check(Players["Doc"]["current_room"], Players["Hannibal the cannibal"]["current_room"], screen_size)
         else:
             print("Go where?")
 
@@ -568,8 +567,7 @@ def execute_command(command):
             
     elif command[0] == "search":
         if len(command) > 1:
-            execute_search(command[1])
-            if execute_search == True:
+            if execute_search(command[1]):
                 cannibal_move()
             sa.stop_all()
             prox_check(Players["Doc"]["current_room"], Players["Hannibal the cannibal"]["current_room"], screen_size)
@@ -578,8 +576,7 @@ def execute_command(command):
     
     elif command[0] == "turn":
         if len(command) > 1:
-            execute_turn(command[1])
-            if execute_turn == True:
+            if execute_turn(command[1]):
                 cannibal_move()            
             sa.stop_all()
             prox_check(Players["Doc"]["current_room"], Players["Hannibal the cannibal"]["current_room"], screen_size)
