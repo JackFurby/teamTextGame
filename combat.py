@@ -12,7 +12,7 @@ player_fighting = {
 #Create a dictionary with stats used for the cannibal in the fight
 cannibal_fighting = {
 	"health": 100,
-	"strength": 30,
+	"strength": 20,
 	"defence": 20,
 	"evolved": False,
 	"alive": Cannibal["alive"]
@@ -140,6 +140,8 @@ def fight_main():
 
 	if player_fighting["alive"] == True:
 		print("\nCongratulations you survived with " + str(player_fighting["health"]) + " HP.\n")
+		return True
 
 	else:
 		print("\nHAHAHA " + Cannibal["name"] + " killed you and now he's going to eat you.\nHe survived with " + str(cannibal_fighting["health"]) + " HP if you were wondering.\n")
+		return False

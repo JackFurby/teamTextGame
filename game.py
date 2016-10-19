@@ -401,9 +401,10 @@ def prox_check(Player_current_room, Hannibal_current_room, screen_size):
         use_spray(Player_current_room, Hannibal_current_room)	
         if use_spray == True:
             return
-        #else:
-            #combat still to be finished and added
-        #    return
+        else:
+            if item_knife in Player["inventory"] :
+                fight_main()
+            return
 
     
     if any(i in han_exit for i in doc_exit) == True: #checks to see if any items in Doc and Hannibal exit lists match
