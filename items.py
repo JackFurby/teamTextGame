@@ -46,7 +46,7 @@ item_camera1={
     "name": "Camera",
 
     "description": 
-    """This is a camera, perhaps you can take some pretty pictures with it""",
+    """This camera could be placed in a room, maybe try place camera.""",
     "weight":1
 }
 item_camera2={
@@ -55,7 +55,7 @@ item_camera2={
     "name": "Camera 2",
 
     "description": 
-    """This camera seems to be broken.""",
+    """This camera could be placed in a room, maybe try place camera.""",
     "weight":1
 }
 item_tablet={
@@ -64,8 +64,7 @@ item_tablet={
     "name": "Tablet",
 
     "description": 
-    """A nice shiny Ipad. You start playing flappy bird in hopes of beating the high score
-before realising the high score is over 9000.""",
+    """You turn it on and see there are two options, camera 1 and camera 2.""",
     "weight":0.437
 }
 

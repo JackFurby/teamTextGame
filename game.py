@@ -42,7 +42,7 @@ def random_generate_items():
     #This loops through all the items in the game and spawns them in random rooms
     for i in items_list:
         #A random number is generated in the range of the list, the room with this random number assigned to it is where the item is generated.
-        if items_list[i]["name"]!="Knife" or items_list[i]["name"]!="Camera 1" or items_list[i]["name"]!="Camera 2":
+        if items_list[i]["name"]!="Knife" or items_list[i]["name"]!="Camera 1" or items_list[i]["name"]!="Camera 2" or items_list[i]["name"]!="Tablet":
             item_location = randint(0, len(list_of_rooms) - 1)
 
             #Add the phone to the items in the room
@@ -70,7 +70,6 @@ def list_of_items(items):
         itemList.append(item_list['name'])
     return(', '.join(itemList))
     
-
 def print_room_items(room):
     """This function takes a room as an input and nicely displays a list of items
     found in this room (followed by a blank line). If there are no items in
@@ -208,49 +207,51 @@ def is_valid_exit(curr_room, chosen_exit,player):
     if chosen_exit in curr_room["exits"]:
     #Create a list of the exits in the format that they appear in lockedRooms
         goingrooms=[]
+        ex1=""
         for ex in curr_room["exits"]:
-            goingrooms.append(str(curr_room["exits"][ex]+ex))
+            if ex=="east":
+                ex1="west"
+            elif ex=="west":
+                ex1="east"
+            elif ex=="north":
+                ex1="south"
+            else:
+                ex1="north"
+            goingrooms.append(str(curr_room["exits"][ex]+ex1))
         #Create a string with the room the user wants to go to in the format that
         #appears in lockedRooms
-        inrooms=str(curr_room["exits"][chosen_exit]+chosen_exit)
+        inrooms=str(curr_room["name"]+chosen_exit)
+        print (goingrooms)
+        print(inrooms)
         #If the character moving is doc
         if player=="Doc":
             #Check if the player has the key
             if "key" in Players["Doc"]["inventory"]:
-                print("The door between Reception and Room 123 is locked")
                 lockedRooms.pop("Receptionsouth", None)
-                print("The door between Reception and Room 251 is locked")
                 lockedRooms.pop("Receptioneast", None)
                 #Check if the switch is on or off
                 if rooms["Emergency room"]["switch"]:
-                    print("The door between Room 251 and Room 347 is locked")
                     lockedRooms["Room 251south"]="Room 347north"
                 else:
-                    print("The door between Room 251 and Room 347 is unlocked")
                     lockedRooms.pop("Room 251south", None)
             #Check if the switch is on or off
             elif rooms["Emergency room"]["switch"]:
-                print("The door between Room 251 and Room 347 is locked")
                 lockedRooms["Room 251south"]="Room 347north"
-                print("The door between Reception and Room 123 is unlocked")
                 lockedRooms.pop("Receptionsouth", None)
-                print("The door between Reception and Room 251 is locked")
                 lockedRooms["Receptioneast"]="Room 251west"
             #If the player has no key and the switch is of:
             else:
-                print("The door between Room 251 and Room 347 is unlocked")
                 lockedRooms.pop("Room 251south", None)
-                print("The door between Reception and Room 123 is locked")
                 lockedRooms["Receptionsouth"]="Room 123north"
-                print("The door between Reception and Room 251 is locked")
                 lockedRooms["Receptioneast"]="Room 251west"
             #Check if the exit chosen is a possible exit
+            print(lockedRooms)
             if chosen_exit in curr_room["exits"]:
                 for name in lockedRooms:
                     #Check if the room the user is going to is locked
                     if name in goingrooms:
                         #Check if the door joining both rooms is locked
-                        if inrooms in lockedRooms:
+                        if inrooms in lockedRooms[name]:
                             print("\nSorry this path is blocked")
                             return False
                         else:
@@ -283,15 +284,13 @@ def is_valid_exit(curr_room, chosen_exit,player):
                 lockedRooms["Receptionsouth"] = "Room 123north"
                 lockedRooms["Receptioneast"] = "Room 251west"
             #If the exit is a valid exit:
-            print(chosen_exit)
-            print(curr_room["exits"])
             if chosen_exit in curr_room["exits"]:
                 for name in lockedRooms:
                     #If the room the character is going to is locked:
                     if name in goingrooms:
                         #If the door between the room he is in and 
                             #where he is going to is locked:
-                        if inrooms in lockedRooms:
+                        if inrooms in lockedRooms[name]:
                             return False
                         else:
                             return True
@@ -308,9 +307,7 @@ def is_valid_exit(curr_room, chosen_exit,player):
             else:
                 return False
     else:
-        return False
-    
-
+        return False  
 #This function changes the Cannibal's position to a new random one
 def cannibal_move():
     """ The function moves Hannibal to a new room based on his available exits"""
@@ -371,9 +368,9 @@ def prox_check(Player_current_room, Hannibal_current_room, screen_size):
     
     
     if Hannibal_current_room == Player_current_room: #if Doc and Hannibal in same room return
-        print("""Oh no, you see a humanoid shape covered in blood... something 
+        print("""            Oh no, you see a humanoid shape covered in blood... something 
             tells you that it isn't his. It is getting closer and you suddenly 
-            realise, it's Hannibal the Cannibal!!!""")
+                     realise, it's Hannibal the Cannibal!!!""")
         use_spray(Player_current_room, Hannibal_current_room)	
         if use_spray == True:
             return
