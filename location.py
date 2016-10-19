@@ -1,5 +1,6 @@
 from maps import *
 from items import *
+from file import *
 
 room_Office1={
 	"name":"Office 1",
@@ -72,7 +73,8 @@ room_666={
 	"items_hidden":[],
 	"searched":False,
 	"exits":{"north":"Room 234","east":"Room 696"},
-	"map":[maps["Room 666 map"],mapsON["Room 666 map"]]
+	"map":[maps["Room 666 map"],mapsON["Room 666 map"]],
+	"file":file_list["room 666"]
 }
 room_ER={
 	"name":"Emergency room",
@@ -110,7 +112,8 @@ room_483={
 	"items_hidden":[],
 	"searched":False,
 	"exits":{"north":"Therapy room","west":"Office 1","south":"Room 645","east":"Canteen"},
-	"map":[maps["Room 483 map"],mapsON["Room 483 map"]]
+	"map":[maps["Room 483 map"],mapsON["Room 483 map"]],
+	"file":file_list["room 483"]
 }
 room_645={
 	"name":"Room 645",
@@ -120,7 +123,8 @@ room_645={
 	"items_hidden":[],
 	"searched":False,
 	"exits":{"north":"Room 483","east":"Room 234"},
-	"map":[maps["Room 645 map"],mapsON["Room 645 map"]]
+	"map":[maps["Room 645 map"],mapsON["Room 645 map"]],
+	"file":file_list["room 645"]
 }
 room_234={
 	"name":"Room 234",
@@ -132,7 +136,8 @@ room_234={
 	"items_hidden":[],
 	"searched":False,
 	"exits":{"north":"Canteen","south":"Room 666","east":"Room 347","west":"Room 645"},
-	"map":[maps["Room 234 map"],mapsON["Room 234 map"]]
+	"map":[maps["Room 234 map"],mapsON["Room 234 map"]],
+	"file":file_list["room 234"]
 }
 room_123={
 	"name":"Room 123",
@@ -143,7 +148,8 @@ room_123={
 	"items_hidden":[],
 	"searched":False,
 	"exits":{"north":"Reception"},
-	"map":[maps["Room 123 map"],mapsON["Room 123 map"]]
+	"map":[maps["Room 123 map"],mapsON["Room 123 map"]],
+	"file":file_list["room 123"]
 }
 room_251={
 	"name":"Room 251",
@@ -155,7 +161,8 @@ room_251={
 	"items_hidden":[],
 	"searched":False,
 	"exits":{"north":"The yard","south":"Room 347","east":"Reception","west":"Canteen"},
-	"map":[maps["Room 251 map"],mapsON["Room 251 map"]]
+	"map":[maps["Room 251 map"],mapsON["Room 251 map"]],
+	"file":file_list["room 251"]
 }
 room_347={
 	"name":"Room 347",
@@ -165,7 +172,8 @@ room_347={
 	"items_hidden":[],
 	"searched":False,
 	"exits":{"north":"Room 251","east":"Room 123","west":"Room 234","south":"Room 696"},
-	"map":[maps["Room 347 map"],mapsON["Room 347 map"]]
+	"map":[maps["Room 347 map"],mapsON["Room 347 map"]],
+	"file":file_list["room 347"]
 }
 room_696={
 	"name":"Room 696",
@@ -177,7 +185,8 @@ You get up and see a large metal sink in the corner of the room with a glowing r
 	"items_hidden":[],
 	"searched":False,
 	"exits":{"north":"Room 347","west":"Room 666"},
-	"map":[maps["Room 696 map"],mapsON["Room 696 map"]]	
+	"map":[maps["Room 696 map"],mapsON["Room 696 map"]],
+	"file":file_list["room 696"]
 }
 rooms={
 	"Office 1":room_Office1,

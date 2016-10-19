@@ -177,6 +177,8 @@ def print_menu(exits, room_items, inv_items):
     for items in inv_items:
         print("DROP", items['id'].upper(), "to drop your", items['id'] + ".")
     print("OPEN MAP to display map.")
+    if "file" in Players["Doc"]["current_room"]:
+        print("OPEN FILE to open file")
     if Players["Doc"]["current_room"]["searched"] == False:
         print("SEARCH ROOM to search room.")
     print("What do you want to do?")
@@ -477,20 +479,27 @@ def execute_drop(item_id):
 def execute_open(open_id):
     """This function takes an open_id as an argument and shows a map of the current game.
     """
-    if rooms["Emergency room"]["switch"]:
-        if open_id == "map":
-            #print map based of current room "Doc" is in
-            for line in Players["Doc"]["current_room"]["map"][1]:
-                print(line)
+    
+    if open_id == "map":
+        if rooms["Emergency room"]["switch"]:
+            if open_id == "map":
+                #print map based of current room "Doc" is in
+                for line in Players["Doc"]["current_room"]["map"][1]:
+                    print(line)
+            else:
+                return
         else:
-            return
-    else:
-        if open_id == "map":
-            #print map based of current room "Doc" is in
-            for line in Players["Doc"]["current_room"]["map"][0]:
-                print(line)
-        else:
-            return
+            if open_id == "map":
+                #print map based of current room "Doc" is in
+                for line in Players["Doc"]["current_room"]["map"][0]:
+                    print(line)
+            else:
+                return
+    
+    if "file" in Players["Doc"]["current_room"]:
+        if open_id == "file":
+            print()
+            print(Players["Doc"]["current_room"]["file"])
     
 def execute_search(search_id):
     """this function allows the user to search the room they are currently in to find
