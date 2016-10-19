@@ -648,7 +648,7 @@ def main():
             if rooms["Office 2"]["phone"] == False:
                 global phone_used
                 phone_used = phone_used + 1
-                if phone_used > 2:
+                if phone_used > 3:
                     Players["Doc"]["escape"] = True
                 
             # Display game status (room description, inventory etc.)
