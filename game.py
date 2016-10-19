@@ -221,8 +221,6 @@ def is_valid_exit(curr_room, chosen_exit,player):
         #Create a string with the room the user wants to go to in the format that
         #appears in lockedRooms
         inrooms=str(curr_room["name"]+chosen_exit)
-        print (goingrooms)
-        print(inrooms)
         #If the character moving is doc
         if player=="Doc":
             #Check if the player has the key
@@ -245,7 +243,6 @@ def is_valid_exit(curr_room, chosen_exit,player):
                 lockedRooms["Receptionsouth"]="Room 123north"
                 lockedRooms["Receptioneast"]="Room 251west"
             #Check if the exit chosen is a possible exit
-            print(lockedRooms)
             if chosen_exit in curr_room["exits"]:
                 for name in lockedRooms:
                     #Check if the room the user is going to is locked
@@ -522,6 +519,13 @@ def execute_use(use_id):
         print("Help is on the way, hold tight until they arrive.")
     else:
         print("Use what?")   
+
+"""def execute_place(place_id):
+    if normalise_input(place_id) == "camera 1":
+        if "camera1" in Players["Doc"]["inventory"]:
+        Players["Doc"]["current_room"]["items"].append("camera 1")
+        Players
+"""
 def execute_command(command):
     """This function takes a command (a list of words as returned by
     normalise_input) and, depending on the type of action (the first word of
@@ -583,6 +587,11 @@ def execute_command(command):
             prox_check(Players["Doc"]["current_room"], Players["Hannibal the cannibal"]["current_room"], screen_size)
         else:
             print("Turn what?")
+    elif command[0] == "place":
+        if len(command) > 2:
+            execute_turn(str(command[1]+" "+command[2]))
+        else:
+            print("Place what?")
     #Way to exit the game without having to crash it
     elif command[0] == "exit":
         return False
