@@ -1,3 +1,5 @@
+from gameparser import *
+
 def display_instructions():
 	#Print instructions
 	print("\nINSTRUCTIONS\n")
@@ -9,31 +11,25 @@ def display_instructions():
 	print("HINT: There might be more than one way to win.")
 
 
-def display_settings():
-	print("\nSETTINGS\n")
+
 	
-def display_leaderboard():
-	print("\nLeaderboard\n")
+
 
 def display_start_menu():
 	
 	#Loops until user plays the game
 	while True:
 
-		print("1. Play\n2. View leaderboard\n3. Instructions\n4. Settings")
+		print("1. Play\n2. Instructions")
 
 		user_input = input("> ")
 
 		#Checks user input
-		if user_input == "1":
+		if normalise_input(user_input) == "play":
 			break
-		elif user_input == "2":
-			display_leaderboard()
-		elif user_input == "3":
+		elif normalise_input(user_input) == "instructions":
 			display_instructions()
-		elif user_input == "4":
-			display_settings()
 		else:
-			print("\nPlease choose option 1, 2, 3 or 4\n")
+			print("\nPlease choose option 1, or 2\n")
 
 
