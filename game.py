@@ -506,14 +506,16 @@ def execute_search(search_id):
         return False
     
 def execute_turn(turn_id):
-    if turn_id == "switch":
-        rooms["Emergency room"]["switch"]=not rooms["Emergency room"]["switch"]
-        print("Something has changed in the map")
-        return True
+    if Players["Doc"]["current_room"]["name"]=="Emergency room":
+        if turn_id == "switch":
+            rooms["Emergency room"]["switch"]=not rooms["Emergency room"]["switch"]
+            print("Something has changed in the map")
+            return True
+        else:
+            print("Sorry you can't turn that")
+            return False
     else:
-        print("Sorry you can't turn that")
         return False
-    
 def execute_use(use_id):
     if use_id == "phone":
         rooms["Office 2"]["phone"] = False
