@@ -43,10 +43,10 @@ item_pepperspray = {
 item_camera1={
     "id": "camera1",
 
-    "name": "Camera",
+    "name": "Camera 1",
 
     "description": 
-    """This camera could be placed in a room, maybe try place camera.""",
+    """This camera could be placed in a room, maybe try place camera 1.""",
     "weight":1
 }
 item_camera2={
@@ -55,7 +55,7 @@ item_camera2={
     "name": "Camera 2",
 
     "description": 
-    """This camera could be placed in a room, maybe try place camera.""",
+    """This camera could be placed in a room, maybe try place camera 2.""",
     "weight":1
 }
 item_tablet={
