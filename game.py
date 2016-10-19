@@ -529,9 +529,9 @@ def execute_command(command):
     if command[0] == "go":
         if len(command) > 1:
             execute_go(command[1])
+            sa.stop_all()
             prox_check(Players["Doc"]["current_room"], Players["Hannibal the cannibal"]["current_room"], screen_size)
             cannibal_move()
-            sa.stop_all()
         else:
             print("Go where?")
 
