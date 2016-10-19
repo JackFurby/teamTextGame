@@ -39,32 +39,14 @@ item_pepperspray = {
     "use":0
 }
 
-
-item_camera1={
-    "id": "camera1",
-
-    "name": "Camera 1",
-
-    "description": 
-    """This camera could be placed in a room, maybe try place camera 1.""",
-    "weight":1
-}
-item_camera2={
-    "id": "camera2",
-
-    "name": "Camera 2",
-
-    "description": 
-    """This camera could be placed in a room, maybe try place camera 2.""",
-    "weight":1
-}
 item_tablet={
     "id": "tablet",
 
     "name": "Tablet",
 
     "description": 
-    """You turn it on and see there are two options, camera 1 and camera 2.""",
+    """A nice shiny Ipad. You start playing flappy bird in hopes of beating the high score
+before realising the high score is over 9000.""",
     "weight":0.437
 }
 
@@ -73,8 +55,6 @@ items_list = {
 "phone": item_phone,
 "key": item_key,
 "knife": item_knife,
-"camera1":item_camera1,
-"camera2":item_camera2,
 "tablet":item_tablet,
 "pepperSpray": item_pepperspray
 }

@@ -42,7 +42,7 @@ def random_generate_items():
     #This loops through all the items in the game and spawns them in random rooms
     for i in items_list:
         #A random number is generated in the range of the list, the room with this random number assigned to it is where the item is generated.
-        if items_list[i]["name"]!="Knife" or items_list[i]["name"]!="Camera 1" or items_list[i]["name"]!="Camera 2" or items_list[i]["name"]!="Tablet":
+        if items_list[i]["name"]!="Knife" or items_list[i]["name"]!="Tablet":
             item_location = randint(0, len(list_of_rooms) - 1)
 
             #Add the phone to the items in the room
@@ -310,8 +310,6 @@ def is_valid_exit(curr_room, chosen_exit,player):
 #This function changes the Cannibal's position to a new random one
 def cannibal_move():
     """ The function moves Hannibal to a new room based on his available exits"""
-    
-    
     play_curr=Players["Doc"]["current_room"]
     exits=Players["Hannibal the cannibal"]["current_room"]["exits"]
     x=len(exits) - 1
@@ -324,6 +322,15 @@ def cannibal_move():
     x = k
     if is_valid_exit(Players["Hannibal the cannibal"]["current_room"], x, "Hannibal"):
         Players["Hannibal the cannibal"]["current_room"]= move(Players["Hannibal the cannibal"]["current_room"]["exits"], x)
+    
+def cannibal_chasing(Doc_room,can_room):
+    for exits in can_room["exits"]:
+        if exits==Doc_room:
+            print (exits)
+            break
+        else:
+            cannibal_chasing(Doc_room,)
+
 
 def move(exits, direction):
     """This function returns the room into which the player will move if, from a
@@ -516,21 +523,14 @@ def execute_turn(turn_id):
             return False
     else:
         return False
+
 def execute_use(use_id):
     if use_id == "phone":
         rooms["Office 2"]["phone"] = False
         print("Help is on the way, hold tight until they arrive.")
+        rooms["Office 2"]["phone_call"]=True
     else:
         print("Use what?")   
-
-def execute_place(place_id):
-    if normalise_input(place_id) == "camera1":
-        if item_camera1 in Players["Doc"]["inventory"]:
-            execute_drop("camera1")
-    elif normalise_input(place_id) == "camera2":
-        if iteam_camera2 in Players["Doc"]["inventory"]:
-            execute_drop("camera2")
-
 
 def execute_command(command):
     """This function takes a command (a list of words as returned by
@@ -593,12 +593,7 @@ def execute_command(command):
             prox_check(Players["Doc"]["current_room"], Players["Hannibal the cannibal"]["current_room"], screen_size)
         else:
             print("Turn what?")
-    elif command[0] == "place":
-        if len(command) > 1:
-            execute_place(str(command[1]))
-        else:
-            print("Place what?")
-    #Way to exit the game without having to crash it
+       #Way to exit the game without having to crash it
     elif command[0] == "exit":
         return False
     

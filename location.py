@@ -8,7 +8,7 @@ room_Office1={
     """Your office is small with a chair by your desk and a bench against the wall.
 There is a door to the east leading to Room 483.""",
 	"items":[],
-	"items_hidden":[item_camera1,item_camera2],
+	"items_hidden":[],
 	"searched":False,
 	"exits":{"east":"Room 483"},
 	"map":[maps["Office 1 map"],mapsON["Office 1 map"]]
@@ -146,7 +146,7 @@ of doctors notes spread across the bed, your file is on top and opened.""",
 	"items":[],
 	"items_hidden":[],
 	"searched":False,
-	"exits":{"north":"Reception"},
+	"exits":{"north":"Reception","west":"Room 347"},
 	"map":[maps["Room 123 map"],mapsON["Room 123 map"]],
 	"file":file_list["room 123"]
 }
