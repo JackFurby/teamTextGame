@@ -1,4 +1,5 @@
 from gameparser import *
+from ending import image_to_ascii
 
 def display_instructions():
 	#Print instructions
@@ -22,6 +23,8 @@ def display_start_menu():
 	
 	#Loops until user plays the game
 	while True:
+		
+		print(image_to_ascii("images/theward.jpg", 80, 20))
 
 		print("1. Play\n2. Instructions")
 
