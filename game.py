@@ -305,6 +305,8 @@ def is_valid_exit(curr_room, chosen_exit,player):
                 lockedRooms["Receptionsouth"]="Room 123north"
                 lockedRooms["Receptioneast"]="Room 251west"
             #If the exit is a valid exit:
+            print(chosen_exit)
+            print(curr_room["exits"])
             if chosen_exit in curr_room["exits"]:
                 for name in lockedRooms:
                     #If the room the character is going to is locked:
@@ -334,7 +336,7 @@ def is_valid_exit(curr_room, chosen_exit,player):
 #This function changes the Cannibal's position to a new random one
 def cannibal_move():
     """ The function moves Hannibal to a new room based on his available exits"""
-    
+    print("cannibal move")
     play_curr=Players["Doc"]["current_room"]
     exits=Players["Hannibal the cannibal"]["current_room"]["exits"]
     x=len(exits)-1
@@ -548,6 +550,7 @@ def execute_command(command):
             sa.stop_all()
             prox_check(Players["Doc"]["current_room"], Players["Hannibal the cannibal"]["current_room"], screen_size)
             if execute_go ==True:
+                print("moving")
                 cannibal_move()
                 sa.stop_all()
                 prox_check(Players["Doc"]["current_room"], Players["Hannibal the cannibal"]["current_room"], screen_size)
