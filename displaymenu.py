@@ -3,8 +3,9 @@ from gameparser import *
 def display_instructions():
 	#Print instructions
 	print("\nINSTRUCTIONS\n")
-	print("The aim of the game is to survive. There's a cannibal on the loose in the asylum and it time for his din dins")
-	print("To move, take, drop, search etc. follow the onscreen instructions. And to open the map you type 'open map'.")
+	print("The aim of the game is to survive. There's a cannibal on the loose in the asylum")
+	print("and it time for his din dins. To move, take, drop, search etc. follow the onscreen instructions.")
+	print("And to open the map you type 'open map'. There's also a hidden turn function but what could it be for?")
 	print("Be weary though you can't carry everything!")
 	print("\nHOW CAN YOU WIN?\n")
 	print("Don't get killed...")
