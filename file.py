@@ -1,11 +1,27 @@
-file_666 = ["666"]
-file_483 = ["483"]
-file_645 = ["645"]
-file_234 = ["234"]
-file_123 = ["123"]
-file_251 = ["251"]
-file_347 = ["347"]
-file_696 = ["696"]
+file_666 = """--------------------
+Name : Leeroy Jenkins
+
+Patient number: 420
+
+Reason for imprisonment: Failed to obey the guild master's orders
+
+History: The one and only. The mighty. No need to say more.
+--------------------"""
+file_483 = """--------------------
+Name : Sarah Connor
+
+Patient number: 251
+
+Reason for imprisonment: Crazy woman that thinks robots are going to take over the world
+
+History: UNKNOWN
+--------------------"""
+file_645 = """"""
+file_234 = """"""
+file_123 = """"""
+file_251 = """"""
+file_347 = """"""
+file_696 = """"""
 
 file_list = {
 "room 666": file_666,
