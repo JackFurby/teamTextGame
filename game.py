@@ -66,8 +66,8 @@ def list_of_items(items):
 
     """
     List = []
-    for items in items_list:
-        List.append(items)
+    for item in items:
+        List.append(item["name"])
     return(', '.join(List))
     
 def print_room_items(room):
