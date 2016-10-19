@@ -246,28 +246,28 @@ def is_valid_exit(curr_room, chosen_exit,player):
             #Check if the player has the key
             if "key" in Players["Doc"]["inventory"]:
                 print("The door between Reception and Room 123 is locked")
-                lockedRooms.pop("Receptionsouth",None)
+                lockedRooms.pop("Receptionsouth", None)
                 print("The door between Reception and Room 251 is locked")
-                lockedRooms.pop("Receptioneast",None)
+                lockedRooms.pop("Receptioneast", None)
                 #Check if the switch is on or off
                 if rooms["Emergency room"]["switch"]:
                     print("The door between Room 251 and Room 347 is locked")
                     lockedRooms["Room 251south"]="Room 347north"
                 else:
                     print("The door between Room 251 and Room 347 is unlocked")
-                    lockedRooms.pop("Room 251south",None)
+                    lockedRooms.pop("Room 251south", None)
             #Check if the switch is on or off
             elif rooms["Emergency room"]["switch"]:
                 print("The door between Room 251 and Room 347 is locked")
                 lockedRooms["Room 251south"]="Room 347north"
                 print("The door between Reception and Room 123 is unlocked")
-                lockedRooms.pop("Receptionsouth",None)
+                lockedRooms.pop("Receptionsouth", None)
                 print("The door between Reception and Room 251 is locked")
                 lockedRooms["Receptioneast"]="Room 251west"
             #If the player has no key and the switch is of:
             else:
                 print("The door between Room 251 and Room 347 is unlocked")
-                lockedRooms.pop("Room 251south",None)
+                lockedRooms.pop("Room 251south", None)
                 print("The door between Reception and Room 123 is locked")
                 lockedRooms["Receptionsouth"]="Room 123north"
                 print("The door between Reception and Room 251 is locked")
@@ -284,7 +284,7 @@ def is_valid_exit(curr_room, chosen_exit,player):
                         else:
                             return True
                     #Check if the room the user is in is locked
-                    elif name==inrooms:
+                    elif name == inrooms:
                         #Check if the door joining both rooms is locked
                         if lockedRooms[name] in goingrooms:
                             print("\nSorry this path is blocked")
@@ -302,14 +302,14 @@ def is_valid_exit(curr_room, chosen_exit,player):
         else:
             #If switch is on:
             if rooms["Emergency room"]["switch"]:
-                lockedRooms["Room 251south"]="Room 347north"
-                lockedRooms.pop("Receptionsouth",None)
-                lockedRooms["Receptioneast"]="Room 251west"
+                lockedRooms["Room 251south"] = "Room 347north"
+                lockedRooms.pop("Receptionsouth", None)
+                lockedRooms["Receptioneast"] = "Room 251west"
             #If switch is off
             else:
-                lockedRooms.pop("Room 251south",None)
-                lockedRooms["Receptionsouth"]="Room 123north"
-                lockedRooms["Receptioneast"]="Room 251west"
+                lockedRooms.pop("Room 251south", None)
+                lockedRooms["Receptionsouth"] = "Room 123north"
+                lockedRooms["Receptioneast"] = "Room 251west"
             #If the exit is a valid exit:
             if chosen_exit in curr_room["exits"]:
                 for name in lockedRooms:
@@ -322,7 +322,7 @@ def is_valid_exit(curr_room, chosen_exit,player):
                         else:
                             return True
                     #If the room the character is in is locked:
-                    elif name==inrooms:
+                    elif name == inrooms:
                         #If the door between the room he is in and 
                             #where he is going to is locked:
                         if lockedRooms[name] in goingrooms:
@@ -343,15 +343,15 @@ def cannibal_move():
     
     play_curr=Players["Doc"]["current_room"]
     exits=Players["Hannibal the cannibal"]["current_room"]["exits"]
-    x=len(exits)-1
-    r=randint(0,x)
+    x=len(exits) - 1
+    r=randint(0, x)
     k=""
     for k in exits:
-        if r==0:
+        if r == 0:
             break
         r=r-1
-    x=k
-    if is_valid_exit(Players["Hannibal the cannibal"]["current_room"],x,"Hannibal"):
+    x = k
+    if is_valid_exit(Players["Hannibal the cannibal"]["current_room"], x, "Hannibal"):
         Players["Hannibal the cannibal"]["current_room"]= move(Players["Hannibal the cannibal"]["current_room"]["exits"], x)
 
 def move(exits, direction):
@@ -559,7 +559,7 @@ def execute_command(command):
             execute_go(command[1])
             sa.stop_all()
             prox_check(Players["Doc"]["current_room"], Players["Hannibal the cannibal"]["current_room"], screen_size)
-            if execute_go ==True:
+            if execute_go == True:
                 cannibal_move()
                 sa.stop_all()
                 prox_check(Players["Doc"]["current_room"], Players["Hannibal the cannibal"]["current_room"], screen_size)
