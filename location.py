@@ -8,7 +8,7 @@ room_Office1={
     """Your office is small with a chair by your desk and a bench against the wall.
 There is a door to the east leading to Room 483.""",
 	"items":[],
-	"items_hidden":["camera1","camera2"],
+	"items_hidden":[item_camera1,item_camera2],
 	"searched":False,
 	"exits":{"east":"Room 483"},
 	"map":[maps["Office 1 map"],mapsON["Office 1 map"]]
@@ -84,7 +84,7 @@ room_ER={
 and a tablet. There's a switch on the wall with an unclear label, it seems like it will have some 
 effect on the locked doors.""",
 	"items":[],
-	"items_hidden":["tablet"],
+	"items_hidden":[item_tablet],
 	"searched":False,
 	"exits":{"south":"Office 2"},
 	"map":[maps["Emergency room map"],mapsON["Emergency room map"]],
