@@ -52,7 +52,7 @@ item_camera1={
 item_camera2={
     "id": "camera2",
 
-    "name": "Camera",
+    "name": "Camera 2",
 
     "description": 
     """This camera seems to be broken.""",
