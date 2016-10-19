@@ -5,7 +5,7 @@ def display_instructions():
 	print("\nINSTRUCTIONS\n")
 	print("The aim of the game is to survive. There's a cannibal on the loose in the asylum and it time for his din dins")
 	print("To move, take, drop, search etc. follow the onscreen instructions. And to open the map you type 'open map'.")
-    print("Be weary though you can't carry everything!")
+	print("Be weary though you can't carry everything!")
 	print("\nHOW CAN YOU WIN?\n")
 	print("Don't get killed...")
 	print("HINT: There is a key where could you use it?")
