@@ -1,21 +1,6 @@
 Things to do
 
-1. menu - done, may need updating once game done
-  -play game
-  -view leaderboard
-  -instructions
-  -settings
-
-2. finish adding items
-
-3. AI
 
 bugs to fix
 
-1. hannibal not moving
 
-still to do from last meeting
-
-1. Case file of each patient in their cells - part, need to add files to file.py
-
-2. Yard locks when someone walks in

@@ -4,31 +4,29 @@ from bisect import bisect
 
 def image_to_ascii(image_input, x, y):
     
-    greyscale = [
+    blackToWhiteAscii = [
             " ",
             " ",
             ".,-",
-            "_ivc=!/|\\~",
-            "gjez2]/(YL)t[+T7Vf",
-            "mdK4ZGbNDXY5P*Q",
+            "/|\\",
+            "]/()[",
+            "K4ZGNDXY5P*Q",
             "W8KMA",
             "#%$"
         ] #list of characters which represent different zonebounds
     
-    zonebounds=[36,72,108,144,180,216,252] #setting the value of greyscale to the zonebounds
+    BlackToWhite = [36,72,108,144,180,216,252] #setting the value of greyscale to the zonebounds
     
-    im=Image.open(image_input) #open image
-    im=im.resize((x, y),Image.BILINEAR) #resize image
-    im=im.convert("L") # convert to mono
+    im = ((Image.open(image_input)).resize((x, y),Image.BILINEAR)).convert("L") # image input, resize and converted to black and white
  
-    str=""
+    str = ""
     for y in range(0,im.size[1]):
         for x in range(0,im.size[0]): #defines areas of image
-            lum=255-im.getpixel((x,y)) #finds out greyscale of areas in the image (0 is white)
-            row=bisect(zonebounds,lum)
-            possibles=greyscale[row] #converts greyscale to ascii
-            str=str+possibles[random.randint(0,len(possibles)-1)] #puts the lines of ascii together
-        str=str+"\n"
+            lum = 255-im.getpixel((x,y)) #finds out greyscale of areas in the image (0 is white)
+            row = bisect(BlackToWhite,lum) #splits image into lines
+            possibles = blackToWhiteAscii[row] #converts greyscale to ascii
+            str = str + possibles[random.randint(0,len(possibles)-1)] #puts the lines of ascii together
+        str = str + "\n"
  
     return(str) #prints result
 
