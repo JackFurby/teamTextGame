@@ -223,12 +223,14 @@ def is_valid_exit(curr_room, chosen_exit,player):
         #Create a string with the room the user wants to go to in the format that
         #appears in lockedRooms
         inrooms=str(curr_room["name"]+chosen_exit)
+        print (goingrooms)
+        print(inrooms)
         #If the character moving is doc
         if player=="Doc":
             #Check if the player has the key
             if "key" in Players["Doc"]["inventory"]:
                 lockedRooms.pop("Receptionsouth", None)
-                lockedRooms.pop("Receptioneast", None)
+                lockedRooms.pop("Receptionwest", None)
                 #Check if the switch is on or off
                 if rooms["Emergency room"]["switch"]:
                     lockedRooms["Room 251south"]="Room 347north"
@@ -238,12 +240,12 @@ def is_valid_exit(curr_room, chosen_exit,player):
             elif rooms["Emergency room"]["switch"]:
                 lockedRooms["Room 251south"]="Room 347north"
                 lockedRooms.pop("Receptionsouth", None)
-                lockedRooms["Receptioneast"]="Room 251west"
+                lockedRooms["Receptionwest"]="Room 251east"
             #If the player has no key and the switch is of:
             else:
                 lockedRooms.pop("Room 251south", None)
                 lockedRooms["Receptionsouth"]="Room 123north"
-                lockedRooms["Receptioneast"]="Room 251west"
+                lockedRooms["Receptionwest"]="Room 251east"
             #Check if the exit chosen is a possible exit
             if chosen_exit in curr_room["exits"]:
                 for name in lockedRooms:
@@ -276,12 +278,12 @@ def is_valid_exit(curr_room, chosen_exit,player):
             if rooms["Emergency room"]["switch"]:
                 lockedRooms["Room 251south"] = "Room 347north"
                 lockedRooms.pop("Receptionsouth", None)
-                lockedRooms["Receptioneast"] = "Room 251west"
+                lockedRooms["Receptionwest"] = "Room 251east"
             #If switch is off
             else:
                 lockedRooms.pop("Room 251south", None)
                 lockedRooms["Receptionsouth"] = "Room 123north"
-                lockedRooms["Receptioneast"] = "Room 251west"
+                lockedRooms["Receptionwest"] = "Room 251east"
             #If the exit is a valid exit:
             if chosen_exit in curr_room["exits"]:
                 for name in lockedRooms:
@@ -382,6 +384,7 @@ def prox_check(Player_current_room, Hannibal_current_room, screen_size):
         if item_knife in Players["Doc"]["inventory"] :
             if fight_main():
                 Players["Hannibal the cannibal"]["alive"] = False
+                return
             else:
                 Players["Doc"]["alive"] = False
             return
