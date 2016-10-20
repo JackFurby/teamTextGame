@@ -205,7 +205,7 @@ rooms={
 	"Room 696":room_696
 }
 lockedRooms={
-	"Canteenwest":"Room 483east",
+	"Canteeneast":"Room 483west",
 	"Canteensouth":"Room 234north",
-	"Canteeneast":"Room 251west",
+	"Canteenwest":"Room 251east",
 }
