@@ -223,8 +223,8 @@ def is_valid_exit(curr_room, chosen_exit,player):
         #Create a string with the room the user wants to go to in the format that
         #appears in lockedRooms
         inrooms=str(curr_room["name"]+chosen_exit)
-        print (goingrooms)
-        print(inrooms)
+        #print (goingrooms)
+        #print(inrooms)
         #If the character moving is doc
         if player=="Doc":
             #Check if the player has the key
@@ -378,8 +378,7 @@ def prox_check(Player_current_room, Hannibal_current_room, screen_size):
         print("""            Oh no, you see a humanoid shape covered in blood... something 
             tells you that it isn't his. It is getting closer and you suddenly 
                      realise, it's Hannibal the Cannibal!!!""")
-        use_spray(Player_current_room, Hannibal_current_room)	
-        if use_spray == True:
+        if use_spray(Player_current_room, Hannibal_current_room):	
             return
         if item_knife in Players["Doc"]["inventory"] :
             if fight_main():
