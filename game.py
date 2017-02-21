@@ -1,4 +1,5 @@
-#!/usr/bin/python3
+from turtledemo.minimal_hanoi import play
+play#!/usr/bin/python3
 
 from random import randint
 from location import rooms
@@ -530,7 +531,7 @@ def execute_use(use_id):
     if use_id == "phone":
         rooms["Reception"]["phone"] = False
         print("\nHelp is on the way, hold tight until they arrive.")
-        rooms["Reception"]["phone_call"]=True
+        #rooms["Reception"]["phone_call"]=True
     else:
         print("Use what?")   
 
@@ -633,14 +634,17 @@ def main():
     while True:
         if Players["Doc"]["escape"] == True:
             print(endings["escape"])
+            sa.stop_all()
             break
         
         elif Players["Doc"]["alive"] == False:
             print(endings["die"])
+            sa.stop_all()
             break
             
         elif Players["Hannibal the cannibal"]["alive"] == False:
             print(endings["live"])
+            sa.stop_all()
             break
         
         else:
